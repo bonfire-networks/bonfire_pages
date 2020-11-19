@@ -29,7 +29,7 @@ defmodule Bonfire.Data.ContentText.Migration do
     end
   end
 
-  def migrate_content_text(down) do
+  def migrate_content_text(:down) do
     drop_mixin_table(ContentText)
   end
 end
