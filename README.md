@@ -1,4 +1,4 @@
-# bonfire_data_contents
+# Bonfire.Data.Contents
 
 
 
