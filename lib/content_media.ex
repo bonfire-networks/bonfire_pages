@@ -7,9 +7,9 @@ defmodule Bonfire.Data.ContentMedia do
   alias Pointers.Changesets
 
   mixin_schema do
-    field :url, :string
-    field :media_type, :string
-    field :metadata, :string
+    field(:url, :string)
+    field(:media_type, :string)
+    field(:metadata, :string)
   end
 
   def changeset(content_media \\ %ContentMedia{}, attrs, opts \\ []),
@@ -25,9 +25,9 @@ defmodule Bonfire.Data.ContentMedia.Migration do
 
   def migrate_content_media(:up) do
     create_mixin_table(ContentMedia) do
-      add :url, :text
-      add :media_type, :text
-      add :metadata, :text
+      add(:url, :text)
+      add(:media_type, :text)
+      add(:metadata, :text)
     end
   end
 

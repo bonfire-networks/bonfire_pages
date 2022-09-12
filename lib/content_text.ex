@@ -7,8 +7,8 @@ defmodule Bonfire.Data.ContentText do
   alias Pointers.Changesets
 
   mixin_schema do
-    field :markdown, :string
-    field :html, :string
+    field(:markdown, :string)
+    field(:html, :string)
   end
 
   def changeset(content_text \\ %ContentText{}, attrs, opts \\ []),
@@ -24,8 +24,8 @@ defmodule Bonfire.Data.ContentText.Migration do
 
   def migrate_content_text(:up) do
     create_mixin_table(ContentText) do
-      add :markdown, :text
-      add :html, :text
+      add(:markdown, :text)
+      add(:html, :text)
     end
   end
 
