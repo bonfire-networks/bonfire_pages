@@ -1,9 +1,11 @@
-defmodule Bonfire.Data.Content.MixProject do
+Code.eval_file("mess.exs")
+
+defmodule Bonfire.Pages.MixProject do
   use Mix.Project
 
   def project do
     [
-      app: :bonfire_data_content,
+      app: :bonfire_pages,
       version: "0.1.0",
       elixir: "~> 1.11",
       start_permanent: Mix.env() == :prod,
@@ -16,8 +18,6 @@ defmodule Bonfire.Data.Content.MixProject do
 
   # Run "mix help deps" to learn about dependencies.
   defp deps do
-    [
-      {:pointers, "~> 0.5.1"}
-    ]
+    Mess.deps([])
   end
 end

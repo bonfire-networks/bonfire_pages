@@ -1,7 +1,7 @@
-defmodule Bonfire.Data.Content do
+defmodule Bonfire.Pages.Content do
   use Pointers.Mixin,
-    otp_app: :bonfire_data_content,
-    source: "bonfire_data_content"
+    otp_app: :bonfire_pages,
+    source: "bonfire_pages"
 
   alias __MODULE__
   alias Pointers.Changesets
@@ -15,10 +15,10 @@ defmodule Bonfire.Data.Content do
     do: Changesets.auto(content, attrs, opts, [])
 end
 
-defmodule Bonfire.Data.Content.Migration do
+defmodule Bonfire.Pages.Content.Migration do
   use Ecto.Migration
   import Pointers.Migration
-  alias Bonfire.Data.Content
+  alias Bonfire.Pages.Content
 
   def migrate_content(dir \\ direction())
 

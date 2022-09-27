@@ -20,8 +20,10 @@ erl_crash.dump
 *.ez
 
 # Ignore package tarball (built via "mix hex.build").
-bonfire_data_content-*.tar
+bonfire_pages-*.tar
 
 
 # Temporary files for e.g. tests
 /tmp
+
+/assets/node_modules/

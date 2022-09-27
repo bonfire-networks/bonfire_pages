@@ -1,0 +1,16 @@
+<div class="relative flex-grow mx-2" phx-hook="Sortable" id="the_page">
+  <div data-group="sections" class="pb-4 dropzone flex-colums" style="min-height: 700px">
+    {#for %{item: section} <- e(@object, :ranked, []) |> Enum.sort_by(&e(&1, :rank, nil))}
+      <div
+        id={"section:#{ulid(section)}"}
+        class="inline-block m-3 draggable flex-no-shrink align-top relative"
+      >
+        <Icon
+          iconify="iconoir:drag-hand-gesture"
+          class="absolute right-0 -mr-3 top-0 w-5 h-5 cursor-pointer"
+        />
+        {rich(e(section, :post_content, :html_body, nil))}
+      </div>
+    {/for}
+  </div>
+</div>

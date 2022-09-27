@@ -1,7 +1,7 @@
-defmodule Bonfire.Data.ContentMedia do
+defmodule Bonfire.Pages.Media do
   use Pointers.Mixin,
-    otp_app: :bonfire_data_content,
-    source: "bonfire_data_content_media"
+    otp_app: :bonfire_pages,
+    source: "bonfire_pages_media"
 
   alias __MODULE__
   alias Pointers.Changesets
@@ -12,19 +12,19 @@ defmodule Bonfire.Data.ContentMedia do
     field(:metadata, :string)
   end
 
-  def changeset(content_media \\ %ContentMedia{}, attrs, opts \\ []),
+  def changeset(content_media \\ %Media{}, attrs, opts \\ []),
     do: Changesets.auto(content_media, attrs, opts, [])
 end
 
-defmodule Bonfire.Data.ContentMedia.Migration do
+defmodule Bonfire.Pages.Media.Migration do
   use Ecto.Migration
   import Pointers.Migration
-  alias Bonfire.Data.ContentMedia
+  alias Bonfire.Pages.Media
 
   def migrate_content_media(dir \\ direction())
 
   def migrate_content_media(:up) do
-    create_mixin_table(ContentMedia) do
+    create_mixin_table(Media) do
       add(:url, :text)
       add(:media_type, :text)
       add(:metadata, :text)
@@ -32,6 +32,6 @@ defmodule Bonfire.Data.ContentMedia.Migration do
   end
 
   def migrate_content_media(:down) do
-    drop_mixin_table(ContentMedia)
+    drop_mixin_table(Media)
   end
 end

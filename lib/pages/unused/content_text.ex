@@ -1,7 +1,7 @@
-defmodule Bonfire.Data.ContentText do
+defmodule Bonfire.Pages.Text do
   use Pointers.Mixin,
-    otp_app: :bonfire_data_content,
-    source: "bonfire_data_content_text"
+    otp_app: :bonfire_pages,
+    source: "bonfire_pages_text"
 
   alias __MODULE__
   alias Pointers.Changesets
@@ -11,25 +11,25 @@ defmodule Bonfire.Data.ContentText do
     field(:html, :string)
   end
 
-  def changeset(content_text \\ %ContentText{}, attrs, opts \\ []),
+  def changeset(content_text \\ %Text{}, attrs, opts \\ []),
     do: Changesets.auto(content_text, attrs, opts, [])
 end
 
-defmodule Bonfire.Data.ContentText.Migration do
+defmodule Bonfire.Pages.Text.Migration do
   use Ecto.Migration
   import Pointers.Migration
-  alias Bonfire.Data.ContentText
+  alias Bonfire.Pages.Text
 
   def migrate_content_text(dir \\ direction())
 
   def migrate_content_text(:up) do
-    create_mixin_table(ContentText) do
+    create_mixin_table(Text) do
       add(:markdown, :text)
       add(:html, :text)
     end
   end
 
   def migrate_content_text(:down) do
-    drop_mixin_table(ContentText)
+    drop_mixin_table(Text)
   end
 end
