@@ -9,7 +9,7 @@
           iconify="iconoir:drag-hand-gesture"
           class="absolute right-0 -mr-3 top-0 w-5 h-5 cursor-pointer"
         />
-        {rich(e(section, :post_content, :html_body, nil))}
+        {templated(e(section, :post_content, :html_body, nil))}
       </div>
     {/for}
   </div>
