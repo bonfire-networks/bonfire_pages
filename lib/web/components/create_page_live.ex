@@ -17,7 +17,7 @@ defmodule Bonfire.Pages.Web.CreatePageLive do
   prop smart_input_prompt, :string, default: nil
   prop smart_input_text, :string, required: false
   prop showing_within, :string, default: nil
-  prop with_rich_editor, :boolean, default: true, required: false
+  prop with_rich_editor, :boolean, default: false
   prop insert_text, :string, default: nil
   prop preloaded_recipients, :any, default: nil
   prop uploads, :any, default: nil

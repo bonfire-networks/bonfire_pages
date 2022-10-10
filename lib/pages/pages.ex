@@ -6,7 +6,8 @@ defmodule Bonfire.Pages do
   alias Bonfire.Epics.Epic
 
   def create(options \\ []) do
-    run_epic(:create, options)
+    # TODO: sanitise HTML to a certain extent depending on is_admin and/or boundaries
+    run_epic(:create, options ++ [do_not_strip_html: true])
   end
 
   def query(filters, _opts \\ []) do

@@ -48,9 +48,10 @@
                   smart_input_prompt={e(@smart_input_prompt, l("Write something..."))}
                   smart_input_text={@smart_input_text}
                   insert_text={@insert_text}
-                  with_rich_editor={@with_rich_editor}
+                  with_rich_editor={false}
                   thread_mode={@thread_mode}
                   showing_within={@showing_within}
+                  advanced_mode
                 />
               </div>
             </Field>

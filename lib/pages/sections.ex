@@ -26,7 +26,7 @@ defmodule Bonfire.Pages.Sections do
   end
 
   def upsert(options \\ []) do
-    Bonfire.Pages.run_epic(:upsert, options, __MODULE__, :section)
+    Bonfire.Pages.run_epic(:upsert, options ++ [do_not_strip_html: true], __MODULE__, :section)
   end
 
   def put_section_in_page(section_id, page_id, position \\ nil) do
