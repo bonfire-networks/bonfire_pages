@@ -31,7 +31,10 @@ defmodule Bonfire.Pages.Web.PageLive do
          create_object_type: :section,
          smart_input_prompt: l("Create a section"),
          context_id: id,
-         object: object
+         object: object,
+         without_sidebar: true,
+         hide_smart_input: true,
+         without_header: true
        )}
     end
   end
