@@ -3,7 +3,7 @@ defmodule Bonfire.Pages.Web.PagesLive do
   alias Bonfire.UI.Me.LivePlugs
 
   declare_extension("Pages",
-    icon: "iconoir:multiple-pages-empty"
+    icon: "noto:bookmark-tabs"
   )
 
   def mount(params, session, socket) do

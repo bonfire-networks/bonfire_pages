@@ -25,6 +25,7 @@ defmodule Bonfire.Pages.Web.PageLive do
        assign(
          socket,
          page: "page",
+         full_page: true,
          page_title: l("Page"),
          context_id: id,
          object: object,

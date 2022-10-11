@@ -18,6 +18,7 @@ defmodule Bonfire.Pages.Web.EditPageLive do
     {:ok,
      assign(
        socket,
+       full_page: true,
        page: "edit_page",
        page_title: l("Edit Page"),
        create_object_type: :section,
