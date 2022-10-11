@@ -7,3 +7,6 @@
     {/for}
   </div>
 </div>
+
+<!-- Support dynamic styling with Tailwind JIT -->
+<script src="https://unpkg.com/tailwindcss-jit-cdn" />

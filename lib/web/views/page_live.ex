@@ -15,8 +15,6 @@ defmodule Bonfire.Pages.Web.PageLive do
   end
 
   defp mounted(%{"id" => id}, _session, socket) do
-    # available_sections = Bonfire.Pages.Sections.list_paginated() |> debug("lsections")
-
     # TODO: query pointer instead to support non-Page pages? Bonfire.Common.Pointers.one(id: id)
     with {:ok, object} <-
            Bonfire.Pages.get(id)
@@ -28,8 +26,6 @@ defmodule Bonfire.Pages.Web.PageLive do
          socket,
          page: "page",
          page_title: l("Page"),
-         create_object_type: :section,
-         smart_input_prompt: l("Create a section"),
          context_id: id,
          object: object,
          without_sidebar: true,

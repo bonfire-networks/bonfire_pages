@@ -2,10 +2,10 @@ defmodule Bonfire.Pages.Sections do
   use Bonfire.Common.Utils
   use Bonfire.Common.Repo
 
-  alias Bonfire.Pages.Page
+  alias Bonfire.Pages.Section
 
   def query(filters, _opts \\ []) do
-    Page
+    Section
     |> query_filter(filters)
     |> join_preload([:post_content])
   end
@@ -29,7 +29,7 @@ defmodule Bonfire.Pages.Sections do
     Bonfire.Pages.run_epic(:upsert, options ++ [do_not_strip_html: true], __MODULE__, :section)
   end
 
-  def put_section_in_page(section_id, page_id, position \\ nil) do
+  def put_in_page(section_id, page_id, position \\ nil) do
     cs =
       Bonfire.Data.Assort.Ranked.changeset(%{
         item_id: section_id,
@@ -50,11 +50,24 @@ defmodule Bonfire.Pages.Sections do
     end
   end
 
-  defp upsert_attempt(cs, position) do
-    cs
-    |> Bonfire.Common.Repo.upsert([rank: e(cs, :changes, :rank_set, nil) || position], [
-      :item_id,
-      :scope_id
-    ])
+  # defp upsert_attempt(cs, position) do
+  #   cs
+  #   |> Bonfire.Common.Repo.upsert([rank: e(cs, :changes, :rank_set, nil) || position], [
+  #     :item_id,
+  #     :scope_id
+  #   ])
+  # end
+
+  def remove_from_page(section_id, page_id) do
+    query =
+      from(p in Bonfire.Data.Assort.Ranked,
+        where:
+          p.item_id == ^section_id and
+            p.scope_id == ^page_id
+      )
+
+    with {1, update} <- Bonfire.Common.Repo.delete_all(query) do
+      {:ok, update}
+    end
   end
 end

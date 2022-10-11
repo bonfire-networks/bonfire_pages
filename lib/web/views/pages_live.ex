@@ -2,6 +2,10 @@ defmodule Bonfire.Pages.Web.PagesLive do
   use Bonfire.UI.Common.Web, :surface_live_view
   alias Bonfire.UI.Me.LivePlugs
 
+  declare_extension("Pages",
+    icon: "iconoir:multiple-pages-empty"
+  )
+
   def mount(params, session, socket) do
     live_plug(params, session, socket, [
       LivePlugs.LoadCurrentAccount,

@@ -17,8 +17,11 @@ defmodule Bonfire.Pages.Web.Routes do
         # live("/", PagesLive)
 
         live("/", PagesLive)
+
         live("/edit/:id", EditPageLive)
-        live("/edit/:id/section/:section_id", EditPageLive)
+
+        live("/editable/:id", PageEditableLive)
+        live("/editable/:id/#section-:section_id", PageEditableLive)
       end
 
       # pages you need a user to view

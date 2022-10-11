@@ -104,8 +104,8 @@ defmodule Bonfire.Pages.LiveHandler do
 
       if page_id,
         do:
-          Bonfire.Pages.Sections.put_section_in_page(ulid(published), page_id)
-          |> debug("put_section_in_page")
+          Bonfire.Pages.Sections.put_in_page(ulid(published), page_id)
+          |> debug("put_in_page")
 
       published
       |> repo().maybe_preload([:post_content])
@@ -121,7 +121,7 @@ defmodule Bonfire.Pages.LiveHandler do
         socket
         |> assign_flash(
           :info,
-          "#{l("Created!")}"
+          l("Created!")
         )
         |> Bonfire.UI.Common.SmartInputLive.reset_input()
         |> patch_to(current_url(socket), fallback: path(published))
@@ -137,6 +137,40 @@ defmodule Bonfire.Pages.LiveHandler do
           # |> patch_to(current_url(socket), fallback: "/error") # so the flash appears
         }
     end
+  end
+
+  def handle_event("add_section", %{"section_id" => section_id} = params, socket) do
+    page = e(socket.assigns, :object, nil) || e(params, "page_id", nil)
+
+    Bonfire.Pages.Sections.put_in_page(ulid!(section_id), ulid!(page))
+    |> debug("put_in_page")
+
+    {
+      :noreply,
+      socket
+      |> assign_flash(
+        :info,
+        l("Added!")
+      )
+      |> patch_to(current_url(socket), fallback: path(page))
+    }
+  end
+
+  def handle_event("remove_section", %{"section_id" => section_id} = params, socket) do
+    page = e(socket.assigns, :object, nil) || e(params, "page_id", nil)
+
+    Bonfire.Pages.Sections.remove_from_page(ulid!(section_id), ulid!(page))
+    |> debug("remove_from_page")
+
+    {
+      :noreply,
+      socket
+      |> assign_flash(
+        :info,
+        l("Removed!")
+      )
+      |> patch_to(current_url(socket), fallback: path(page))
+    }
   end
 
   # def handle_params(%{"after" => cursor} = attrs, _, %{assigns: %{thread_id: thread_id}} = socket) do

@@ -1,4 +1,13 @@
 <div class="flex flex-col h-full write_post_content">
+  <form phx-change="Bonfire.Pages:add_section">
+    <select name="section_id" class="select">
+      <option>{l("Add an existing section")}</option>
+      <option :for={section <- e(available_sections(), :edges, [])} value={ulid(section)}>{e(section, :post_content, :name, nil) || e(section, :name, nil) ||
+          Text.truncate(Text.text_only(e(section, :post_content, :html_body, nil)), 60) || ulid(section)}</option>
+    </select>
+    <input type="hidden" name="page_id" value={@context_id}>
+  </form>
+  <hr>
   <Form
     for={:section}
     submit="Bonfire.Pages:edit_section"
@@ -29,7 +38,7 @@
               <Field name={:name}>
                 <TextInput
                   opts={
-                    placeholder: l("Enter a name for the section")
+                    placeholder: l("Enter a name for a new section")
                   }
                   class={
                     "block w-full border-0 p-2 text-lg font-medium placeholder-base-content/70 bg-base-100 text-base-content border-b border-base-content/10",
@@ -45,7 +54,7 @@
                 <WriteEditorLive
                   field_name="section[post_content][html_body]"
                   textarea_class={@textarea_class}
-                  smart_input_prompt={e(@smart_input_prompt, l("Write something..."))}
+                  smart_input_prompt={l("Enter the markdown, liquid, and/or HTML for the new section...")}
                   smart_input_text={@smart_input_text}
                   insert_text={@insert_text}
                   with_rich_editor={false}
