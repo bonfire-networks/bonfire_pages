@@ -1,1 +1,4 @@
-<iframe src={"/pages/editable/#{@context_id}"} class="h-full w-full min-h-screen" />
+<iframe
+  src={"/pages/editable/#{@context_id}?reload=#{@reload}"}
+  class="h-full w-full min-h-screen"
+/>

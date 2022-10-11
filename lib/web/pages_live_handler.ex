@@ -124,7 +124,9 @@ defmodule Bonfire.Pages.LiveHandler do
           l("Created!")
         )
         |> Bonfire.UI.Common.SmartInputLive.reset_input()
-        |> patch_to(current_url(socket), fallback: path(published))
+        # |> assign(reload: Pointers.ULID.generate())
+        # current_url(socket), fallback: path(published))
+        |> patch_to("/pages/edit/#{page_id}?reload=#{Pointers.ULID.generate()}")
       }
     else
       e ->
@@ -152,7 +154,8 @@ defmodule Bonfire.Pages.LiveHandler do
         :info,
         l("Added!")
       )
-      |> patch_to(current_url(socket), fallback: path(page))
+      |> assign(reload: Pointers.ULID.generate())
+      # |> patch_to(current_url(socket), fallback: path(page))
     }
   end
 
@@ -169,6 +172,7 @@ defmodule Bonfire.Pages.LiveHandler do
         :info,
         l("Removed!")
       )
+      # |> assign(reload: Pointers.ULID.generate())
       |> patch_to(current_url(socket), fallback: path(page))
     }
   end
