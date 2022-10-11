@@ -30,7 +30,7 @@ defmodule Bonfire.Pages.Web.PageEditableLive do
      )}
   end
 
-  def do_handle_params(%{"id" => id} = _params, _url, socket) do
+  def do_handle_params(%{"id" => id} = params, _url, socket) do
     # TODO: query pointer instead to support non-Page pages? Bonfire.Common.Pointers.one(id: id)
     with {:ok, object} <-
            Bonfire.Pages.get(id)
@@ -41,7 +41,8 @@ defmodule Bonfire.Pages.Web.PageEditableLive do
        assign(
          socket,
          context_id: id,
-         object: object
+         object: object,
+         reload: e(params, "reload", nil)
        )}
     end
   end

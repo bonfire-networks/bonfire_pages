@@ -13,7 +13,7 @@ defmodule Bonfire.Pages do
   def query(filters, _opts \\ []) do
     Page
     |> query_filter(filters)
-    |> join_preload([:post_content])
+    |> proload([:post_content])
   end
 
   def one(filters, opts \\ []) do

@@ -70,7 +70,16 @@ defmodule Bonfire.Pages.Acts.Section.Upsert do
         # maybe_debug(epic, act, attrs, "Post attrs")
         if attrs == %{}, do: maybe_debug(act, attrs, "empty attrs")
 
-        Section.changeset(attrs)
+        section =
+          with _ when is_binary(id) <- true,
+               {:ok, section} <- Bonfire.Pages.Sections.get(id) do
+            section
+          else
+            _ ->
+              %Section{}
+          end
+
+        Section.changeset(section, attrs)
         |> Map.put(:action, :upsert)
         |> maybe_overwrite_id(id)
         |> Epic.assign(epic, as, ...)
@@ -78,7 +87,10 @@ defmodule Bonfire.Pages.Acts.Section.Upsert do
     end
   end
 
-  defp maybe_overwrite_id(changeset, nil), do: changeset
+  defp maybe_overwrite_id(changeset, nil) do
+    changeset
+    |> Map.put(:action, :insert)
+  end
 
   defp maybe_overwrite_id(changeset, id),
     do: Changeset.put_change(changeset, :id, id)

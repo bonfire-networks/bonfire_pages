@@ -15,7 +15,7 @@ defmodule Bonfire.Pages.Web.EditSectionLive do
   prop to_boundaries, :list, default: []
   prop to_circles, :list, default: []
   prop smart_input_prompt, :string, default: nil
-  prop smart_input_text, :string, required: false
+  prop smart_input_opts, :any, required: false
   prop showing_within, :string, default: nil
   prop with_rich_editor, :boolean, default: false
   prop insert_text, :string, default: nil
@@ -33,7 +33,7 @@ defmodule Bonfire.Pages.Web.EditSectionLive do
   prop textarea_class, :css_class
 
   def available_sections() do
-    Bonfire.Pages.Sections.list_paginated()
+    Bonfire.Pages.Sections.list_paginated(limit: 100)
     |> debug("lsections")
   end
 end

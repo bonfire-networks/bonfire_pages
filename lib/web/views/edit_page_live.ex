@@ -25,7 +25,30 @@ defmodule Bonfire.Pages.Web.EditPageLive do
      )}
   end
 
-  def do_handle_params(params, _url, socket) do
+  defp do_handle_params(%{"edit_section" => section_id} = params, _url, socket) do
+    debug(section_id)
+
+    with {:ok, section} <- Bonfire.Pages.Sections.get(section_id, socket) do
+      socket
+      |> assign(
+        create_object_type: :section,
+        smart_input_prompt: l("Edit section"),
+        smart_input_opts: [
+          open: true,
+          id: ulid(section),
+          name: e(section, :post_content, :name, nil),
+          text: e(section, :post_content, :html_body, nil)
+        ]
+      )
+    else
+      _ ->
+        socket
+        |> assign_error(l("Could not find the section to edit"))
+    end
+    |> do_handle_params(Map.drop(params, ["edit_section"]), nil, ...)
+  end
+
+  defp do_handle_params(params, _url, socket) do
     id = e(params, "id", nil)
 
     {:noreply,

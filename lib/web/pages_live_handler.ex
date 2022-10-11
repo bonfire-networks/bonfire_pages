@@ -82,6 +82,8 @@ defmodule Bonfire.Pages.LiveHandler do
     # debug(e(socket.assigns, :showing_within, nil), "SHOWING")
     current_user = current_user_required(socket)
 
+    page_id = e(attrs, :reply_to, :thread_id, nil)
+
     with %{} <- current_user || {:error, "You must be logged in"},
          # fail before uploading
          %{valid?: true} <- Section.changeset(attrs),
@@ -96,32 +98,23 @@ defmodule Bonfire.Pages.LiveHandler do
            [
              current_user: current_user,
              section_attrs: attrs,
-             boundary: e(params, "to_boundaries", "mentions")
+             boundary: e(params, "to_boundaries", "mentions"),
+             # to edit
+             section_id: e(params, "id", nil),
+             page_id: page_id
            ]
            |> debug("use opts for boundary + save fields in PostContent"),
          {:ok, published} <- Bonfire.Pages.Sections.upsert(opts) do
-      page_id = e(attrs, :reply_to, :thread_id, nil)
-
-      if page_id,
-        do:
-          Bonfire.Pages.Sections.put_in_page(ulid(published), page_id)
-          |> debug("put_in_page")
-
-      published
-      |> repo().maybe_preload([:post_content])
-      |> dump("created!")
-
-      # activity = e(published, :activity, nil)
-
-      # permalink = path(published)
-      # |> debug("permalink")
+      # published
+      # |> repo().maybe_preload([:post_content])
+      # |> dump("created!")
 
       {
         :noreply,
         socket
         |> assign_flash(
           :info,
-          l("Created!")
+          l("Section saved!")
         )
         |> Bonfire.UI.Common.SmartInputLive.reset_input()
         # |> assign(reload: Pointers.ULID.generate())

@@ -7,7 +7,7 @@ defmodule Bonfire.Pages.Sections do
   def query(filters, _opts \\ []) do
     Section
     |> query_filter(filters)
-    |> join_preload([:post_content])
+    |> proload([:post_content, :caretaker, :files])
   end
 
   def one(filters, opts \\ []) do
@@ -26,27 +26,46 @@ defmodule Bonfire.Pages.Sections do
   end
 
   def upsert(options \\ []) do
-    Bonfire.Pages.run_epic(:upsert, options ++ [do_not_strip_html: true], __MODULE__, :section)
+    with {:ok, %{id: id} = published} <-
+           Bonfire.Pages.run_epic(
+             :upsert,
+             options ++ [do_not_strip_html: true],
+             __MODULE__,
+             :section
+           ) do
+      if options[:page_id],
+        do:
+          put_in_page(id, options[:page_id])
+          |> debug("put_in_page - TODO: move to epic?")
+
+      {:ok, published}
+    end
   end
 
   def put_in_page(section_id, page_id, position \\ nil) do
-    cs =
-      Bonfire.Data.Assort.Ranked.changeset(%{
-        item_id: section_id,
-        scope_id: page_id,
-        rank_set: position
-      })
-      |> Ecto.Changeset.unique_constraint([:item_id, :scope_id],
-        name: :bonfire_data_ranked_unique_per_scope
-      )
-      |> dump()
-
-    with {:ok, update} <- Bonfire.Common.Repo.insert(cs) do
-      {:ok, update}
+    with {:ok, %Ecto.Changeset{valid?: true} = cs} <-
+           Bonfire.Data.Assort.Ranked.changeset(%{
+             item_id: section_id,
+             scope_id: page_id,
+             rank_set: position
+           })
+           |> Ecto.Changeset.unique_constraint([:item_id, :scope_id],
+             name: :bonfire_data_ranked_unique_per_scope
+           )
+           # |> Ecto.Changeset.apply_action(:insert)
+           |> dump(),
+         {:ok, ins} <- Bonfire.Common.Repo.insert(cs) do
+      {:ok, ins}
     else
-      # poor man's upsert
-      %Ecto.Changeset{valid?: false} -> Bonfire.Common.Repo.update(cs)
-      e -> error(e)
+      # poor man's upsert - TODO fix drag and drop ordering and make better and generic
+      {:error, %Ecto.Changeset{} = cs} ->
+        Bonfire.Common.Repo.upsert(cs, [:rank])
+
+      %Ecto.Changeset{} = cs ->
+        Bonfire.Common.Repo.upsert(cs, [:rank])
+
+      e ->
+        error(e)
     end
   end
 
