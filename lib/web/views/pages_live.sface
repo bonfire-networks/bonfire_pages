@@ -1,11 +1,11 @@
-<div :for={page <- e(@pages, :edges, [])} class="card card-compact w-96 bg-base-100 shadow-xl">
+<div :for={%{id: page_id} = page <- e(@pages, :edges, [])} class="card card-compact w-96 bg-base-100 shadow-xl">
   <figure><img src="https://placeimg.com/400/225/arch" alt="Pic"></figure>
   <div class="card-body">
     <h2 class="card-title">{e(page, :post_content, :name, nil)}</h2>
     <p>{templated(e(page, :post_content, :html_body, nil))}</p>
     <div class="card-actions justify-end">
-      <LiveRedirect to={path(page)} class="btn btn-primary">{l("View")}</LiveRedirect>
-      <LiveRedirect to={"/pages/edit/#{ulid(page)}"} class="btn btn-primary">{l("Edit")}</LiveRedirect>
+      <LiveRedirect to={Bonfire.Pages.page_path(page |> debug, @__context__)} class="btn btn-primary">{l("View")}</LiveRedirect>
+      <LiveRedirect to={"/pages/edit/#{page_id}"} class="btn btn-primary">{l("Edit")}</LiveRedirect>
     </div>
   </div>
 </div>

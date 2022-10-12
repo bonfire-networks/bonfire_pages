@@ -27,6 +27,8 @@
         </div>
         {templated(e(section, :post_content, :html_body, nil))}
       </div>
+    {#else}
+      {templated(e(@object, :post_content, :html_body, nil)) || e(@object, :post_content, :summary, nil) || e(@object, :post_content, :name, nil)}
     {/for}
   </div>
 </div>

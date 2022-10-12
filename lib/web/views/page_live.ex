@@ -18,15 +18,14 @@ defmodule Bonfire.Pages.Web.PageLive do
     # TODO: query pointer instead to support non-Page pages? Bonfire.Common.Pointers.one(id: id)
     with {:ok, object} <-
            Bonfire.Pages.get(id)
-           |> debug()
-           |> repo().maybe_preload(ranked: [item: [:post_content]])
-           |> debug() do
+          #  |> debug()
+           |> repo().maybe_preload(ranked: [item: [:post_content]]) do
       {:ok,
        assign(
          socket,
          page: "page",
          full_page: true,
-         page_title: l("Page"),
+         page_title: e(object, :post_content, :name, nil) || l("Page"),
          context_id: id,
          object: object,
          without_sidebar: true,

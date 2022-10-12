@@ -42,6 +42,7 @@ defmodule Bonfire.Pages.Web.PageEditableLive do
          socket,
          context_id: id,
          object: object,
+         page_title: e(object, :post_content, :name, nil) || l("Edit Page"),
          reload: e(params, "reload", nil)
        )}
     end

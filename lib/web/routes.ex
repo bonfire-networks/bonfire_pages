@@ -1,6 +1,15 @@
 defmodule Bonfire.Pages.Web.Routes do
   defmacro __using__(_) do
     quote do
+
+      # URL alias with slug
+      scope "/", Bonfire.Pages.Web do
+        pipe_through(:browser)
+
+        live("/:slug/page-:id", PageLive, as: Bonfire.Pages.Page)
+        live("/:slug/page-:id/#section-:section_id", PageLive, as: Bonfire.Pages.Section)
+      end
+
       # pages anyone can view
       scope "/pages", Bonfire.Pages.Web do
         pipe_through(:browser)
