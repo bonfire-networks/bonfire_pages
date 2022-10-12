@@ -1,4 +1,51 @@
-<iframe
-  src={"/pages/editable/#{@context_id}?reload=#{@reload}"}
-  class="h-full w-full min-h-screen"
-/>
+<div 
+  class="grid gap-8 grid-cols-[1fr_280px]">
+  <div class="border shadow border-base-content/5 mockup-window bg-base-100 widget">
+    <iframe
+      src={"/pages/editable/#{@context_id}?reload=#{@reload}"}
+      class="w-full h-full "
+    />
+  </div>
+
+ <div class="sticky top-[56px] -mt-6  shadow-lg -mr-4 overflow-y-auto border-l bg-base-200 widget border-base-content/10">
+    <nav class="" role="navigation" aria-label={l("Page settings")}>
+      <div class="flex items-center justify-between p-4 pt-6">
+        <div class="font-semibold">{l "Page settings"}</div>
+        <Icon iconify="akar-icons:sidebar-right" class="w-5 h-5 text-base-content/70" />
+      </div>
+    
+      <div class="w-full max-w-xs p-3 form-control">
+        <label class="label">
+          <span class="!text-sm font-medium label-text">Page URL</span>
+        </label>
+        <input type="text" placeholder="Type here" class="w-full h-10 max-w-xs text-sm input input-bordered" />
+        <label class="label">
+          <span class="label-text-alt text-base-content/70">{Config.get(:host)}/</span>
+        </label>
+      </div>
+
+      <div class="w-full max-w-xs p-3 pt-0 form-control">
+        <label class="label">
+          <span class="!text-sm font-medium label-text">Page access</span>
+        </label>
+        <select class="h-10 select select-bordered">
+          <option selected>Public</option>
+          <option>Local members only</option>
+          <option>Only admins</option>
+        </select>
+      </div>
+        
+      <div class="p-3 pt-0 form-control">
+        <label class="cursor-pointer label">
+          <span class="label-text">Make it the homepage</span> 
+          <input type="checkbox" class="toggle" />
+        </label>
+      </div>
+
+      <div class="flex items-center gap-2 p-3 text-sm link link-hover text-error">
+        <Icon class="w-4 h-4" outline="Trash" />
+        <span>{l "Delete page"}</span>
+      </div>
+    </nav>
+  </div>
+</div>

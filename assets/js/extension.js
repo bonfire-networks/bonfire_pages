@@ -15,7 +15,7 @@ PageHooks.Sortable = {
   document.querySelectorAll('.dropzone').forEach((dropzone) => {
    console.log(dropzone.dataset.group)
     var sortable = new Sortable(dropzone, {
-      animation: 150,
+      animation: 350,
       draggable: '.draggable',
       delay: 50,
       sort: true,
