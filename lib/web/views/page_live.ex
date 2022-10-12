@@ -17,7 +17,7 @@ defmodule Bonfire.Pages.Web.PageLive do
   defp mounted(%{"id" => id}, _session, socket) do
     # TODO: query pointer instead to support non-Page pages? Bonfire.Common.Pointers.one(id: id)
     with {:ok, object} <-
-           Bonfire.Pages.get(id)
+           Bonfire.Pages.get(ulid!(id))
           #  |> debug()
            |> repo().maybe_preload(ranked: [item: [:post_content]]) do
       {:ok,
