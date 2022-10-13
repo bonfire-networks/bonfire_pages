@@ -1,5 +1,7 @@
 <div class="grid gap-8 grid-cols-[1fr_280px]">
   <div class="border shadow border-base-content/5 mockup-window bg-base-100 widget">
+    <!-- TODO: put page title in mockup-window titlebar -->
+    <!-- TODO: add a toggle between desktop and mobile view (the frame size and the style: `mockup-window` vs `mockup-phone`) -->
     <iframe src={"/pages/editable/#{@context_id}?reload=#{@reload}"} class="w-full h-full" />
   </div>
 
@@ -12,19 +14,23 @@
 
       <div class="w-full max-w-xs p-3 form-control">
         <label class="label">
-          <span class="!text-sm font-medium label-text">Page URL</span>
+          <span class="!text-sm font-medium label-text">{l("Page URL")} <a href={Bonfire.Pages.page_path(@object, @__context__)} class="btn btn-primary">{l("View")}</a></span>
         </label>
         <label class="label">
-          <span class="label-text-alt text-base-content/70">{Config.get(:host)}/</span>
+          <!-- <span class="label-text-alt text-base-content/70">{Config.get(:host)}/</span> -->
+          <!-- TODO: editable -->
           <input
             type="text"
-            value={Bonfire.Pages.page_path(@object, @__context__)}
+            readonly="readonly"
+            value={Bonfire.Pages.slug(e(@object, :post_content, :name, nil))}
             placeholder="Type here"
-            class="w-full h-10 max-w-xs text-sm input input-bordered"
+            class="w-full h-10 max-w-xs text-sm input input-bordered readonly"
           />
         </label>
       </div>
 
+      <!-- 
+      TODO: for now boundaries are set on creation
       <div class="w-full max-w-xs p-3 pt-0 form-control">
         <label class="label">
           <span class="!text-sm font-medium label-text">Page access</span>
@@ -34,19 +40,30 @@
           <option>Local members only</option>
           <option>Only admins</option>
         </select>
-      </div>
+      </div> -->
 
       <div class="p-3 pt-0 form-control">
-        <label class="cursor-pointer label">
-          <span class="label-text">Make it the homepage</span>
-          <input type="checkbox" class="toggle">
-        </label>
+        <form name="settings" phx-change="Bonfire.Me.Settings:set">
+          <input name="scope" value={:instance} type="hidden">
+          <label class="cursor-pointer label">
+            <span class="label-text">Make it the homepage</span>
+            <input name="ui[homepage_redirect_to]" value="nil" type="hidden">
+            <input
+              name="ui[homepage_redirect_to]"
+              type="checkbox"
+              class="toggle"
+              value={Bonfire.Pages.page_path(@object, @__context__)}
+            />
+          </label>
+        </form>
       </div>
 
-      <div class="flex items-center gap-2 p-3 text-sm link link-hover text-error">
-        <Icon class="w-4 h-4" outline="Trash" />
-        <span>{l("Delete page")}</span>
-      </div>
+      <Bonfire.UI.Social.Activity.DeleteObjectLive
+        object={@object}
+        object_type_readable={l("page")}
+        open_btn_class="flex items-center gap-2 p-3 text-sm link link-hover text-error"
+        redirect_after="/pages"
+      />
     </nav>
   </div>
 </div>

@@ -59,7 +59,7 @@ defmodule Bonfire.Pages.Web.EditPageLive do
         object
       else
         _ ->
-          id
+          raise Bonfire.Fail, :not_found
       end
 
     {:noreply,
@@ -67,6 +67,7 @@ defmodule Bonfire.Pages.Web.EditPageLive do
        socket,
        context_id: id,
        object: object,
+       page_title: "#{l("Edit Page")}: #{e(object, :post_content, :name, nil)}",
        reload: e(params, "reload", nil)
      )}
   end

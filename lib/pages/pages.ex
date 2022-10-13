@@ -12,7 +12,7 @@ defmodule Bonfire.Pages do
   end
 
   def page_path(%{id: id, name: title} = _post_content, opts) do
-    "/#{SimpleSlug.slugify(title, lowercase?: false, truncate: 30)}/page-#{id}"
+    "/#{slug(title)}/page-#{id}"
   end
 
   def page_path(%{id: id, post_content: _} = page, opts) do
@@ -35,6 +35,12 @@ defmodule Bonfire.Pages do
   def page_path(%{id: id}, _opts) do
     "/pages/#{id}"
   end
+
+  def slug(title) when is_binary(title) do
+    SimpleSlug.slugify(title, lowercase?: false, truncate: 30)
+  end
+
+  def slug(_), do: "-"
 
   def create(options \\ []) do
     # TODO: sanitise HTML to a certain extent depending on is_admin and/or boundaries

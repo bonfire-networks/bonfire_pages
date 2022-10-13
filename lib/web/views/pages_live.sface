@@ -12,7 +12,7 @@
         300
       )}</p>
     <div class="card-actions justify-end">
-      <LiveRedirect to={Bonfire.Pages.page_path(page, @__context__)} class="btn btn-primary">{l("View")}</LiveRedirect>
+      <a href={Bonfire.Pages.page_path(page, @__context__)} class="btn btn-primary">{l("View")}</a>
       <LiveRedirect to={"/pages/edit/#{page_id}"} class="btn btn-primary">{l("Edit")}</LiveRedirect>
     </div>
   </div>

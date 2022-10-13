@@ -33,7 +33,7 @@ defmodule Bonfire.Pages.Web.EditSectionLive do
   prop textarea_class, :css_class
 
   def available_sections() do
-    Bonfire.Pages.Sections.list_paginated(limit: 100)
-    |> debug("lsections")
+    Bonfire.Pages.Sections.list_paginated([], paginate: [limit: 100])
+    # |> debug("lsections")
   end
 end
