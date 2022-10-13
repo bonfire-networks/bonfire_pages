@@ -57,8 +57,9 @@
           </label>
         </form>
       </div>
-
-      <Bonfire.UI.Social.Activity.DeleteObjectLive
+      <Dynamic.Component
+        :if={module_enabled?(Bonfire.UI.Social.Activity.DeleteObjectLive)}
+        module={Bonfire.UI.Social.Activity.DeleteObjectLive}
         object={@object}
         object_type_readable={l("page")}
         open_btn_class="flex items-center gap-2 p-3 text-sm link link-hover text-error"
