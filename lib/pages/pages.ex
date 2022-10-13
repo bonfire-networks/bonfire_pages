@@ -6,26 +6,33 @@ defmodule Bonfire.Pages do
   alias Bonfire.Epics.Epic
 
   def page_path(page, opts \\ [])
+
   def page_path(%{post_content: %{id: _} = post_content} = _page, opts) do
     page_path(post_content, opts)
   end
+
   def page_path(%{id: id, name: title} = _post_content, opts) do
     "/#{SimpleSlug.slugify(title, lowercase?: false, truncate: 30)}/page-#{id}"
   end
+
   def page_path(%{id: id, post_content: _} = page, opts) do
     page
     |> repo().maybe_preload(:post_content)
     |> e(:post_content, %{id: id})
     |> page_path(opts)
   end
+
   def page_path(id, opts) when is_binary(id) do
     with {:ok, page} <- get(id, opts) do
       page_path(opts)
-    else _ ->
-      page_path(%{id: id}, opts)
+    else
+      _ ->
+        page_path(%{id: id}, opts)
     end
   end
-  def page_path(%{id: id}, _opts) do # fallback
+
+  # fallback
+  def page_path(%{id: id}, _opts) do
     "/pages/#{id}"
   end
 

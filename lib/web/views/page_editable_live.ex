@@ -34,9 +34,7 @@ defmodule Bonfire.Pages.Web.PageEditableLive do
     # TODO: query pointer instead to support non-Page pages? Bonfire.Common.Pointers.one(id: id)
     with {:ok, object} <-
            Bonfire.Pages.get(id)
-           |> debug()
-           |> repo().maybe_preload(ranked: [item: [:post_content]])
-           |> debug() do
+           |> repo().maybe_preload(ranked: [item: [:post_content]]) do
       {:noreply,
        assign(
          socket,

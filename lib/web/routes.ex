@@ -1,7 +1,6 @@
 defmodule Bonfire.Pages.Web.Routes do
   defmacro __using__(_) do
     quote do
-
       # URL alias with slug
       scope "/", Bonfire.Pages.Web do
         pipe_through(:browser)

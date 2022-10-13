@@ -18,7 +18,7 @@ defmodule Bonfire.Pages.Web.PageLive do
     # TODO: query pointer instead to support non-Page pages? Bonfire.Common.Pointers.one(id: id)
     with {:ok, object} <-
            Bonfire.Pages.get(ulid!(id))
-          #  |> debug()
+           #  |> debug()
            |> repo().maybe_preload(ranked: [item: [:post_content]]) do
       {:ok,
        assign(
@@ -31,7 +31,8 @@ defmodule Bonfire.Pages.Web.PageLive do
          without_sidebar: true,
          hide_smart_input: true,
          without_header: true
-       )}
+       )
+       |> SEO.assign(object)}
     end
   end
 end

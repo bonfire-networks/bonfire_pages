@@ -51,12 +51,22 @@ defmodule Bonfire.Pages.Web.EditPageLive do
 
   defp do_handle_params(params, _url, socket) do
     id = e(params, "id", nil)
+    # TODO: avoid querying twice, in EditPage and PageEditable
+    object =
+      with {:ok, object} <-
+             Bonfire.Pages.get(id)
+             |> repo().maybe_preload(ranked: [item: [:post_content]]) do
+        object
+      else
+        _ ->
+          id
+      end
 
     {:noreply,
      assign(
        socket,
        context_id: id,
-       object: id,
+       object: object,
        reload: e(params, "reload", nil)
      )}
   end

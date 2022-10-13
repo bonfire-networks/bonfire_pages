@@ -3,7 +3,14 @@
     <select name="section_id" class="select">
       <option>{l("Add an existing section")}</option>
       <option :for={section <- e(available_sections(), :edges, [])} value={ulid(section)}>{e(section, :post_content, :name, nil) || e(section, :name, nil) ||
-          Text.truncate(Text.text_only(e(section, :post_content, :html_body, nil)), 60) || ulid(section)}</option>
+          Text.truncate(
+            Text.text_only(
+              templated(
+                e(section, :post_content, :summary, nil) || e(section, :post_content, :html_body, nil)
+              )
+            ),
+            60
+          ) || ulid(section)}</option>
     </select>
     <input type="hidden" name="page_id" value={@context_id}>
   </form>
