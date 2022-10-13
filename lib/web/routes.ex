@@ -9,6 +9,7 @@ defmodule Bonfire.Pages.Web.Routes do
         live("/:slug/page-:id/#section-:section_id", PageLive, as: Bonfire.Pages.Section)
       end
 
+
       # pages anyone can view
       scope "/pages", Bonfire.Pages.Web do
         pipe_through(:browser)
@@ -17,6 +18,7 @@ defmodule Bonfire.Pages.Web.Routes do
         live("/:id", PageLive, as: Bonfire.Pages.Page)
         live("/:id/#section-:section_id", PageLive, as: Bonfire.Pages.Section)
       end
+
 
       # pages you need an account to view
       scope "/pages", Bonfire.Pages.Web do
@@ -30,6 +32,17 @@ defmodule Bonfire.Pages.Web.Routes do
 
         live("/editable/:id", PageEditableLive)
         live("/editable/:id/#section-:section_id", PageEditableLive)
+      end
+
+      # posts you need an account to view
+      scope "/posts", Bonfire.Pages.Web do
+        pipe_through(:browser)
+        pipe_through(:account_required)
+        # live("/", PagesLive)
+
+        live("/", PagesLive)
+
+        live("/edit", EditPostLive)
       end
 
       # pages you need a user to view

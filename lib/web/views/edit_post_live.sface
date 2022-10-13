@@ -1,0 +1,123 @@
+<div
+  x-data="{full_page: false}"
+  :class="{'!grid-cols-1': full_page}"
+  class="grid gap-8 grid-cols-[1fr_280px]">
+  <div>
+    <header class="flex items-center justify-between">
+      <div class="flex items-center gap-3 px-2">
+        <a href="#" class="items-center normal-case btn btn-sm btn-ghost">
+          <Icon solid="ChevronLeft" class="w-5 h-5" />
+          <div class="ml-1 text-sm">{l "Posts"}</div>
+        </a>
+        <div class="text-sm text-base-content/70">{l ("New post")}</div>
+      </div>
+      <div class="flex items-center gap-3">
+        <div class="normal-case btn btn-sm btn-primary">{l ("Publish")}</div>
+        <div x-show="full_page" x-cloak class="btn btn-sm btn-circle btn-ghost" @click="full_page = false">
+          <Icon iconify="akar-icons:sidebar-right" class="w-4 h-4 text-base-content/70" />
+        </div>
+      </div>
+    </header>
+
+    <article class="max-w-screen-md mx-auto mt-16">
+
+
+      <!-- HERE WE SHOULD USE OUR UPLOAD_BUTTON COMP -->
+       <label class="inline-flex items-center gap-2 mb-2 ml-2 font-light normal-case btn btn-ghost text-base-content/70 btn-sm">
+        <Icon solid="PaperClip" class="w-4 h-4 mx-auto " />
+        <span>{l ("Add a feature image")}</span>
+      </label>
+
+      <input type="text" placeholder="Post title" class="w-full max-w-full text-3xl font-bold bg-base-300 input input-lg" />
+      
+      <label class="w-full input-sizer stacked">
+        <textarea class="w-full pl-6 mt-4 text-lg textarea bg-base-300" oninput="this.parentNode.dataset.value = this.value" rows="1" placeholder="Begin writing your post.."></textarea>
+      </label>
+    </article>
+  </div>
+  <div 
+    x-show="!full_page"
+    x-cloak
+    x-transition:enter="transform transition ease-in-out duration-500 sm:duration-700" 
+    x-transition:enter-start="translate-x-full" 
+    x-transition:enter-end="translate-x-0" 
+    x-transition:leave="transform transition ease-in-out duration-500 sm:duration-700" 
+    x-transition:leave-start="translate-x-0" 
+    x-transition:leave-end="translate-x-full" 
+    class="sticky top-[56px] -mt-6  shadow-lg -mr-4 overflow-y-auto border-l bg-base-200 widget border-base-content/10">
+    <nav class="" role="navigation" aria-label={l("Post settings")}>
+      <div class="flex items-center justify-between p-4 pt-6">
+        <div class="font-semibold">{l("Post settings")}</div>
+        <div class="btn btn-sm btn-circle btn-ghost" @click="full_page = true">
+          <Icon iconify="akar-icons:sidebar-right" class="w-4 h-4 text-base-content/70" />
+        </div>
+      </div>
+
+      <div class="w-full max-w-xs p-3 form-control">
+        <label class="flex-1 w-full label">
+          <span class="!text-sm w-full flex items-center justify-between flex-1 font-medium label-text">
+          <span>{l("Post URL")}</span><a href={""} class="btn btn-xs btn-primary">{l("View")}</a></span>
+        </label>
+          <!-- <span class="label-text-alt text-base-content/70">{Config.get(:host)}/</span> -->
+          <!-- TODO: editable -->
+        <input
+          type="text"
+          readonly="readonly"
+          value={""}
+          placeholder="Type here"
+          class="w-full h-10 max-w-xs text-sm input input-bordered readonly"
+        />
+      </div>
+
+      <div class="w-full max-w-xs p-3 pt-0 form-control">
+        <label class="flex-1 w-full label">
+          <span class="!text-sm w-full flex items-center justify-between flex-1 font-medium label-text">
+          <span>{l("Tags")}</span></span>
+        </label>
+        <select class="select select-sm h-[2.5rem] select-bordered">
+        </select>
+      </div>
+
+       
+      <div class="w-full max-w-xs p-3 pt-0 form-control">
+        <label class="label">
+          <span class="!text-sm font-medium label-text">Page access</span>
+        </label>
+        <select class="h-[2.5rem] select select-sm select-bordered">
+          <option selected>Public</option>
+          <option>Local members only</option>
+          <option>Only admins</option>
+        </select>
+      </div>
+
+      <div class="w-full max-w-xs p-3 pt-0 form-control">
+        <label class="label">
+          <span class="!text-sm font-medium label-text">Excerpt</span>
+        </label>
+        <textarea class="textarea textarea-bordered" />
+      </div>
+      
+      <div class="p-3 pt-0 form-control">
+        <label class="cursor-pointer label">
+          <span class="label-text">Allow comments</span>
+          <input name="ui[homepage_redirect_to]" value="nil" type="hidden">
+          <input
+            name="ui[homepage_redirect_to]"
+            type="checkbox"
+            class="toggle"
+          />
+        </label>
+      </div>
+
+
+      <!-- <Dynamic.Component
+        :if={module_enabled?(Bonfire.UI.Social.Activity.DeleteObjectLive)}
+        module={Bonfire.UI.Social.Activity.DeleteObjectLive}
+        object={@object}
+        object_type_readable={l("page")}
+        open_btn_class="flex items-center gap-2 p-3 text-sm link link-hover text-error"
+        redirect_after="/pages"
+      /> -->
+    </nav>
+  </div>
+</div>

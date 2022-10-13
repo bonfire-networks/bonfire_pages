@@ -1,6 +1,42 @@
-<div
+<div class="flex items-center justify-between py-8 mb-6">
+  <div class="text-2xl font-bold text-base-content">
+    {l("Pages")}
+  </div>
+</div>
+<div class="flex flex-col border-t divide-y border-base-content/10 divide-base-content/10">
+  <div
+    :for={%{id: page_id} = page <- e(@pages, :edges, [])}
+    class="flex items-center justify-between p-3 hover:bg-base-content/5"
+  >
+    <div class="flex flex-col">
+      <div class="text-lg font-bold">{e(page, :post_content, :name, nil)}</div>
+      <div class="text-sm font-light text-base-content/70">By ivan minutillo - 21 hours ago</div>
+      <div class="mt-2 badge badge-sm badge-success">Published</div>
+    </div>
+    <div class="flex items-center gap-2">
+      <a
+        href={Bonfire.Pages.page_path(page, @__context__)}
+        target="_blank"
+        class="gap-2 normal-case rounded-md btn btn-sm"
+      >
+        <Icon outline="Eye" class="w-5 h-5" />
+        <span class="tracking-wide">{l("View")}</span>
+      </a>
+      <LiveRedirect
+        to={"/pages/edit/#{page_id}"}
+        class="gap-2 normal-case rounded-md btn btn-sm text-base-content/70 border-base-content/70 btn-outline"
+      >
+        <Icon outline="Pencil" class="w-5 h-5" />
+        <span class="tracking-wide">{l("Edit")}</span>
+      </LiveRedirect>
+    </div>
+  </div>
+</div>
+
+
+<!-- <div
   :for={%{id: page_id} = page <- e(@pages, :edges, [])}
-  class="card card-compact w-96 bg-base-100 shadow-xl"
+  class="shadow-xl card card-compact w-96 bg-base-100"
 >
   <figure><img src="https://placeimg.com/400/225/arch" alt="Pic"></figure>
   <div class="card-body">
@@ -11,9 +47,9 @@
         ),
         300
       )}</p>
-    <div class="card-actions justify-end">
+    <div class="justify-end card-actions">
       <a href={Bonfire.Pages.page_path(page, @__context__)} class="btn btn-primary">{l("View")}</a>
       <LiveRedirect to={"/pages/edit/#{page_id}"} class="btn btn-primary">{l("Edit")}</LiveRedirect>
     </div>
   </div>
-</div>
+</div> -->
