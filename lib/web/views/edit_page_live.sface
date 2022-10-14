@@ -83,6 +83,17 @@
       </div> -->
 
       <div class="p-3 pt-0 form-control">
+        <form name="pin" phx-change="Bonfire.Social.Pins:pin">
+          <label class="cursor-pointer label">
+            <span class="label-text">{l("Pin (show in navigation)")}</span>
+            <input name="id" value={ulid(@object)} type="hidden">
+            <input name="direction" value="down" type="hidden">
+            <input name="direction" type="checkbox" class="toggle" value="up">
+          </label>
+        </form>
+      </div>
+
+      <div class="p-3 pt-0 form-control">
         <form name="settings" phx-change="Bonfire.Me.Settings:set">
           <input name="scope" value={:instance} type="hidden">
           <label class="cursor-pointer label">

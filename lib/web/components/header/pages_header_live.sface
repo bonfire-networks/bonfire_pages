@@ -28,24 +28,17 @@
             </div>
           </div>
           <ul class="flex-row hidden p-0 sm:flex menu menu-horizontal">
-            <li>
-              <LivePatch to="/docs" class="">
-                <span class="text-base font-regular">Documentation</span>
-              </LivePatch>
-            </li>
-            <li>
-              <LivePatch to="/faq" class="">
-                <span class="text-base font-regular">FAQs</span>
-              </LivePatch>
-            </li>
-            <li>
-              <LivePatch to="/blog" class="">
-                <span class="text-base font-regular">Blog</span>
-              </LivePatch>
-            </li>
-            <li>
-              <LivePatch to="/contribute" class="">
-                <span class="text-base font-regular">Contribute</span>
+            <li :for={%{edge: %{object: %{post_content: p}}} <-
+              Bonfire.Social.Pins.list_by(
+                # TODO: use the instance scope/circle instead of current_user
+                @current_user,
+                object_type: [Bonfire.Pages.Page],
+                current_user: @current_user
+              )
+              |> e(:edges, [])
+              |> debug("pinpage")}>
+              <LivePatch to={Bonfire.Pages.page_path(p)} class="">
+                <span class="text-base font-regular">{e(p, :name, nil)}</span>
               </LivePatch>
             </li>
             <li>
