@@ -119,7 +119,7 @@
       </div>
 
       <!-- <Dynamic.Component
-        :if={module_enabled?(Bonfire.UI.Social.Activity.DeleteObjectLive)}
+        :if={module_enabled?(Bonfire.UI.Social.Activity.DeleteObjectLive, @__context__)}
         module={Bonfire.UI.Social.Activity.DeleteObjectLive}
         object={@object}
         object_type_readable={l("page")}
