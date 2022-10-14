@@ -20,11 +20,8 @@ defmodule Bonfire.Pages.Web.EditPostLive do
        socket,
        full_page: true,
        hide_smart_input: true,
-       page: "edit_page",
-       page_title: l("Edit Page"),
-       create_object_type: :section,
-       smart_input_prompt: l("Add a section")
+       page: "edit_post",
+       page_title: l("Edit Post")
      )}
   end
-
 end

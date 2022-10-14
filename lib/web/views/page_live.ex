@@ -30,7 +30,7 @@ defmodule Bonfire.Pages.Web.PageLive do
          object: object,
          without_sidebar: true,
          hide_smart_input: true,
-         without_header: true
+         nav_header: Bonfire.Pages.Web.PagesHeaderLive
        )
        |> SEO.assign(object)}
     end

@@ -1,10 +1,10 @@
 <div
   x-data="{full_page: false}"
   :class="{'!grid-cols-1': full_page}"
-  class="grid gap-8 grid-cols-[1fr_280px]">
-
+  class="grid gap-8 grid-cols-[1fr_280px]"
+>
   <div>
-    <header class="flex items-center justify-between mb-4">
+    <!-- <header class="flex items-center justify-between mb-4">
       <div class="flex items-center gap-3 px-2">
         <a href="#" class="items-center normal-case btn btn-sm btn-ghost">
           <Icon solid="ChevronLeft" class="w-5 h-5" />
@@ -17,25 +17,26 @@
           <Icon iconify="akar-icons:sidebar-right" class="w-4 h-4 text-base-content/70" />
         </div>
       </div>
-    </header>
+    </header> -->
 
-    <div class="ml-4 border shadow border-base-content/5 mockup-window bg-base-100 h-[calc(var(--inner-window-height)_-_160px)]">
+    <div class="ml-4 mt-2 border shadow border-base-content/5 mockup-window bg-base-100 h-[calc(var(--inner-window-height)_-_75px)]">
       <!-- TODO: put page title in mockup-window titlebar -->
       <!-- TODO: add a toggle between desktop and mobile view (the frame size and the style: `mockup-window` vs `mockup-phone`) -->
       <iframe src={"/pages/editable/#{@context_id}?reload=#{@reload}"} class="w-full h-full" />
     </div>
   </div>
 
-  <div 
+  <div
     x-show="!full_page"
     x-cloak
-    x-transition:enter="transform transition ease-in-out duration-500 sm:duration-700" 
-    x-transition:enter-start="translate-x-full" 
-    x-transition:enter-end="translate-x-0" 
-    x-transition:leave="transform transition ease-in-out duration-500 sm:duration-700" 
-    x-transition:leave-start="translate-x-0" 
-    x-transition:leave-end="translate-x-full" 
-    class="sticky top-[56px] -mt-6  shadow-lg -mr-4 overflow-y-auto border-l bg-base-200 widget border-base-content/10">
+    x-transition:enter="transform transition ease-in-out duration-500 sm:duration-700"
+    x-transition:enter-start="translate-x-full"
+    x-transition:enter-end="translate-x-0"
+    x-transition:leave="transform transition ease-in-out duration-500 sm:duration-700"
+    x-transition:leave-start="translate-x-0"
+    x-transition:leave-end="translate-x-full"
+    class="sticky top-[56px] -mt-6  shadow-lg -mr-4 overflow-y-auto border-l bg-base-200 widget border-base-content/10"
+  >
     <nav class="" role="navigation" aria-label={l("Page settings")}>
       <div class="flex items-center justify-between p-4 pt-6">
         <div class="font-semibold">{l("Page settings")}</div>
@@ -48,7 +49,11 @@
         <label class="flex-1 w-full label">
           <span class="!text-sm w-full flex items-center justify-between flex-1 font-medium label-text">
             <span>{l("Page URL")}</span>
-            <a href={Bonfire.Pages.page_path(@object, @__context__)} class="btn btn-xs btn-primary">{l("View")}</a>
+            <a
+              target="_blank"
+              href={Bonfire.Pages.page_path(@object, @__context__)}
+              class="btn btn-xs btn-primary"
+            >{l("View")}</a>
           </span>
         </label>
         <label class="label">

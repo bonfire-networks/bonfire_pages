@@ -44,7 +44,9 @@
                 <WriteEditorLive
                   field_name="page[post_content][html_body]"
                   textarea_class={@textarea_class}
-                  smart_input_prompt={l("Enter the page contents...")}
+                  smart_input_prompt={l(
+                    "Enter a plain text summary for the page (useful for showing in page lists, and for search engines)..."
+                  )}
                   smart_input_opts={@smart_input_opts}
                   insert_text={@insert_text}
                   with_rich_editor={false}

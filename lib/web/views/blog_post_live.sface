@@ -1,0 +1,66 @@
+<div
+  x-data="{full_page: false}"
+  :class="{'!grid-cols-1': full_page}"
+  class="grid gap-8 grid-cols-[1fr_280px]"
+>
+  <div>
+    <article
+      class="max-w-screen-md mx-auto mt-16"
+      id={"activity--" <> (ulid(@activity) || e(@object, :id, "no-id"))}
+    >
+      <div class="w-full max-w-full text-3xl font-bold bg-base-300 input input-lg">
+        {e(@object, :post_content, :name, nil) || l("Blog post")}
+      </div>
+
+      <Bonfire.UI.Social.Activity.MediaLive
+        if={@main_image}
+        media={[@main_image]}
+        showing_within={:blog}
+      />
+
+      <Bonfire.UI.Social.Activity.NoteLive
+        object={@object}
+        activity={@activity}
+        permalink={current_url(@__context__)}
+        viewing_main_object
+        showing_within={:blog}
+      />
+
+      <!-- 
+      <div class="w-full input-sizer stacked">
+        <div class="w-full pl-6 mt-4 text-lg bg-base-300">
+        {templated(e(@object, :post_content, :html_body, nil)) || "Text goes here"}
+        </div>
+      </div> -->
+
+      <Bonfire.UI.Social.Activity.MediaLive
+        if={is_list(@media) and @media != []}
+        media={@media}
+        showing_within={:blog}
+        viewing_main_object
+      />
+
+      <div class="feed-clickable flex items-center flex-1 justify-end space-x-4 mt-0 -ml-2">
+        <Bonfire.UI.Social.Activity.ReactionsLive
+          object={@object}
+          activity={@activity}
+          object_type={Bonfire.Data.Social.Post}
+          permalink={current_url(@__context__)}
+          showing_within={:blog}
+        />
+      </div>
+
+      <Bonfire.UI.Social.ThreadLive id={ulid(@object)} thread_id={ulid(@object)} />
+    </article>
+  </div>
+</div>
+
+<!-- include smart input for replying -->
+<Bonfire.UI.Common.SmartInputContainerLive
+  showing_within={:blog}
+  hide_smart_input
+  reply_to_id={ulid(@object)}
+  context_id={ulid(@object)}
+/>
+<!-- to_boundaries={@object_boundary}
+     -->

@@ -26,7 +26,10 @@ defmodule Bonfire.Pages.Web.PagesLive do
        page_title: l("Pages"),
        create_object_type: :page,
        smart_input_prompt: l("Create a page"),
-       pages: Bonfire.Pages.list_paginated() |> debug("lpages")
+       pages:
+         Bonfire.Pages.list_paginated()
+         |> repo().maybe_preload(created: [creator: [:profile]])
+         |> debug("lpages")
      )}
   end
 end
