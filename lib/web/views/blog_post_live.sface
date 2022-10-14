@@ -40,14 +40,23 @@
         viewing_main_object
       />
 
-      <div class="feed-clickable flex items-center flex-1 justify-end space-x-4 mt-0 -ml-2">
-        <Bonfire.UI.Social.Activity.ReactionsLive
+      <div class="flex items-center justify-end flex-1 mt-0 -ml-2 space-x-4 feed-clickable">
+        <Dynamic.Component
+          :if={module_enabled?(Bonfire.UI.Social.Activity.ReactionsLive)}
+          module={Bonfire.UI.Social.Activity.ReactionsLive}
           object={@object}
           activity={@activity}
           object_type={Bonfire.Data.Social.Post}
           permalink={current_url(@__context__)}
           showing_within={:blog}
         />
+        <!-- <Bonfire.UI.Social.Activity.ReactionsLive
+          object={@object}
+          activity={@activity}
+          object_type={Bonfire.Data.Social.Post}
+          permalink={current_url(@__context__)}
+          showing_within={:blog}
+        /> -->
       </div>
 
       <Bonfire.UI.Social.ThreadLive id={ulid(@object)} thread_id={ulid(@object)} />
