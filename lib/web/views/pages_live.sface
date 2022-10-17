@@ -1,38 +1,40 @@
-<div class="flex items-center justify-between py-8 mb-6">
-  <div class="text-2xl font-bold text-base-content">
-    {l("Pages")}
-  </div>
-</div>
-<div class="flex flex-col border-t divide-y border-base-content/10 divide-base-content/10">
-  <div
-    :for={%{id: page_id} = page <- e(@pages, :edges, [])}
-    class="flex items-center justify-between p-3 hover:bg-base-content/5"
+<nav
+  role="tabpanel"
+  class="flex justify-start pt-2 mx-3 mt-8 border-t border-b md:mb-2 md:border-b-0 border-base-content/10 md:rounded-b-xl tabs bg-base-100"
+  aria-label="Switch between timeline, posts, boosts, media tabs or other extensions enabled tabs"
+>
+  <LivePatch
+    :for={{tab, tab_name} <- [list: l("Pages"), nav: l("Site Navigation")]}
+    to={"/pages/tab/#{tab}"}
+    class="flex px-2 pt-2 text-base capitalize md:px-4 hover:bg-base-content/10 group place-content-center"
   >
-    <div class="flex flex-col">
-      <div class="text-lg font-bold">{e(page, :post_content, :name, nil)}</div>
-      <div class="text-sm font-light text-base-content/70">
-        {date_from_now(page)}
-        {l("by")} {e(page, :created, :creator, :profile, :name, nil)}
+    <div class={
+      "tab tab-bordered group-hover:text-opacity-100",
+      "tab-active": @selected_tab == tab || @selected_tab == to_string(tab)
+    }>
+      {tab_name}
+    </div>
+  </LivePatch>
+</nav>
+
+<div
+  phx-hook="Sortable"
+  id="the_navigation"
+  class="flex flex-col border-t divide-y border-base-content/10 divide-base-content/10 dropzone"
+>
+  <div
+    :for={%{id: id} = page <- e(@pages, :edges, [])}
+    id={id}
+    class="flex items-center justify-between p-3 hover:bg-base-content/5 draggable"
+  >
+    {#if @selected_tab == :nav}
+      <div class="shrink btn btn-square btn-sm btn-ghost">
+        <Icon iconify="ic:round-drag-indicator" class="w-5 h-5" />
       </div>
-    </div>
-    <div class="flex items-center gap-2">
-      <Bonfire.Boundaries.Web.BoundaryIconLive with_label id={"boundary-#{page_id}"} object={page} />
-      <a
-        href={Bonfire.Pages.page_path(page, @__context__)}
-        target="_blank"
-        class="gap-2 normal-case rounded-md btn btn-sm"
-      >
-        <Icon outline="Eye" class="w-5 h-5" />
-        <span class="tracking-wide">{l("View")}</span>
-      </a>
-      <LiveRedirect
-        to={"/pages/edit/#{page_id}"}
-        class="gap-2 normal-case rounded-md btn btn-sm text-base-content/70 border-base-content/70 btn-outline"
-      >
-        <Icon outline="Pencil" class="w-5 h-5" />
-        <span class="tracking-wide">{l("Edit")}</span>
-      </LiveRedirect>
-    </div>
+      <Bonfire.Pages.Web.PageEditPreviewLive page={e(page, :edge, :object, nil)} />
+    {#else}
+      <Bonfire.Pages.Web.PageEditPreviewLive page={page} />
+    {/if}
   </div>
 </div>
 

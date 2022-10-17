@@ -23,13 +23,76 @@ defmodule Bonfire.Pages.Web.PagesLive do
      assign(
        socket,
        page: "pages",
+       selected_tab: e(params, "tab", :list),
        page_title: l("Pages"),
        create_object_type: :page,
        smart_input_prompt: l("Create a page"),
+       pages: nil
+     )}
+  end
+
+  def do_handle_params(%{"tab" => "nav"} = params, uri, socket) do
+    {:noreply,
+     assign(
+       socket,
+       selected_tab: :nav,
+       pages:
+         Bonfire.Social.Pins.list_instance_pins(
+           object_type: [Bonfire.Pages.Page],
+           current_user: current_user(socket)
+         )
+         |> debug("lnav")
+     )}
+  end
+
+  def do_handle_params(params, uri, socket) do
+    {:noreply,
+     assign(
+       socket,
+       selected_tab: :list,
        pages:
          Bonfire.Pages.list_paginated()
          |> repo().maybe_preload(created: [creator: [:profile]])
          |> debug("lpages")
      )}
   end
+
+  def handle_params(params, uri, socket) do
+    # poor man's hook I guess
+    with {_, socket} <-
+           Bonfire.UI.Common.LiveHandlers.handle_params(params, uri, socket) do
+      undead_params(socket, fn ->
+        do_handle_params(params, uri, socket)
+      end)
+    end
+  end
+
+  def handle_event(
+        "dropped",
+        %{
+          "dragged_id" => dragged_id,
+          "dropped_index" => dropped_index
+        } = params,
+        socket
+      ) do
+    debug(dragged_id: dragged_id)
+    debug(dropped_index: dropped_index)
+
+    # TODO: user scope for non admins?
+    scope = :instance
+
+    # implementation for ordering
+    Bonfire.Social.Pins.rank_pin(dragged_id, scope, dropped_index)
+
+    {:noreply, socket}
+  end
+
+  def handle_event(action, attrs, socket),
+    do:
+      Bonfire.UI.Common.LiveHandlers.handle_event(
+        action,
+        attrs,
+        socket,
+        __MODULE__
+      )
 end

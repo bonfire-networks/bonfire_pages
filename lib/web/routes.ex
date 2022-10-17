@@ -18,6 +18,7 @@ defmodule Bonfire.Pages.Web.Routes do
         # live("/", PagesLive)
 
         live("/", PagesLive)
+        live("/tab/:tab", PagesLive)
 
         live("/edit/:id", EditPageLive)
 

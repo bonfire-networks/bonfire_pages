@@ -77,44 +77,32 @@ defmodule Bonfire.Pages.Web.PageEditableLive do
     {:noreply, socket}
   end
 
-  def handle_event(
-        "dropped",
-        %{
-          "dragged_id" => "section:" <> dragged_id,
-          # "dragged_from_id" => previous_bin,
-          # "dropped_to_id" => new_bin,
-          "dropped_index" => dropped_index
-        } = params,
-        socket
-      ) do
-    debug(dragged_id: dragged_id)
-    # debug(previous_bin: previous_bin)
-    # debug(new_bin: new_bin)
-    debug(dropped_index: dropped_index)
+  # def handle_event(
+  #       "dropped",
+  #       %{
+  #         "dragged_id" => "section:" <> dragged_id,
+  #         "dragged_from_id" => previous_bin,
+  #         "dropped_to_id" => new_bin,
+  #         "dropped_index" => dropped_index
+  #       } = params,
+  #       socket
+  #     ) do
+  #   debug(dragged_id: dragged_id)
+  #   # debug(previous_bin: previous_bin)
+  #   # debug(new_bin: new_bin)
+  #   debug(dropped_index: dropped_index)
 
-    # TODO: for add/removing sections to the page
+  #   # TODO: for add/removing sections to the page by dragging
 
-    # add the bin as a tag (and remove the previous one)
-    # if previous_bin != new_bin do
-    #   existing_tags = e(socket.assigns, :all_cards, dragged_id, :tags, [])
+  #   # save the order
+  #   Bonfire.Pages.Sections.put_in_page(
+  #     dragged_id,
+  #     e(socket.assigns, :object, :id, nil),
+  #     dropped_index
+  #   )
 
-    #   new_tags =
-    #     [e(socket.assigns, :task_tag_id, nil), new_bin] ++
-    #       Enum.reject(existing_tags, &(&1.id == previous_bin))
-
-    #   # debug(new_tags, "new_tags")
-    #   # ValueFlows.Util.try_tag_thing(current_user_required(socket), dragged_id, new_tags)
-    # end
-
-    # save the order
-    Bonfire.Pages.Sections.put_in_page(
-      dragged_id,
-      e(socket.assigns, :object, :id, nil),
-      dropped_index
-    )
-
-    {:noreply, socket}
-  end
+  #   {:noreply, socket}
+  # end
 
   def handle_event(action, attrs, socket),
     do:
