@@ -87,8 +87,15 @@
           <label class="cursor-pointer label">
             <span class="label-text">{l("Pin (show in navigation)")}</span>
             <input name="id" value={ulid(@object)} type="hidden">
+            <input name="scope" value="instance" type="hidden">
             <input name="direction" value="down" type="hidden">
-            <input name="direction" type="checkbox" class="toggle" value="up">
+            <input
+              name="direction"
+              type="checkbox"
+              class="toggle"
+              value="up"
+              checked={Bonfire.Social.Pins.pinned?(:instance, @object)}
+            />
           </label>
         </form>
       </div>
@@ -104,6 +111,7 @@
               type="checkbox"
               class="toggle"
               value={Bonfire.Pages.page_path(@object, @__context__)}
+              checked={Config.get([:ui, :homepage_redirect_to]) == Bonfire.Pages.page_path(@object, @__context__)}
             />
           </label>
         </form>

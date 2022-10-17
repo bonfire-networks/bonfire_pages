@@ -27,7 +27,7 @@ defmodule Bonfire.Pages.Web.EditPageLive do
   end
 
   defp do_handle_params(%{"edit_section" => section_id} = params, _url, socket) do
-    debug(section_id)
+    # debug(section_id)
 
     with {:ok, section} <- Bonfire.Pages.Sections.get(section_id, socket) do
       socket
@@ -51,7 +51,7 @@ defmodule Bonfire.Pages.Web.EditPageLive do
 
   defp do_handle_params(params, _url, socket) do
     id = e(params, "id", nil)
-    # TODO: avoid querying twice, in EditPage and PageEditable
+    # TODO: avoid querying twice? in EditPage and PageEditable
     object =
       with {:ok, object} <-
              Bonfire.Pages.get(id)
