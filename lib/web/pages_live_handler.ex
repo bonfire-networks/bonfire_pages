@@ -23,7 +23,7 @@ defmodule Bonfire.Pages.LiveHandler do
          # fail before uploading
          %{valid?: true} <- Page.changeset(attrs),
          uploaded_media <-
-           Bonfire.Social.Posts.LiveHandler.multi_upload(
+           live_upload_files(
              current_user,
              params["upload_metadata"],
              socket
@@ -88,7 +88,7 @@ defmodule Bonfire.Pages.LiveHandler do
          # fail before uploading
          %{valid?: true} <- Section.changeset(attrs),
          uploaded_media <-
-           Bonfire.Social.Posts.LiveHandler.multi_upload(
+           live_upload_files(
              current_user,
              params["upload_metadata"],
              socket
