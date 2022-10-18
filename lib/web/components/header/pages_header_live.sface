@@ -2,7 +2,7 @@
   class="sticky top-0 z-20 flex items-center w-full px-4 border-b border-base-content/10 bg-base-300"
   x-data="{open: false}"
 >
-  <div class="absolute top-0 left-0">
+  <div class="">
     <Bonfire.UI.Common.AppsLive
       :if={not is_nil(@current_user)}
       nav_items={@nav_items}
@@ -12,7 +12,7 @@
       homepage_link={Config.get([:ui, :homepage_redirect_to])}
     />
   </div>
-  <header class="min-h-auto max-w-screen-xl mx-auto navbar p-0 h-[56px]">
+  <header class="min-h-auto max-w-screen-xl mx-auto navbar min-h-0 p-0 h-[56px]">
     <div class="flex items-center w-full h-full">
       <div class="flex items-center flex-1">
         <div class="flex items-center justify-center flex-1 sm:items-stretch sm:justify-start">
