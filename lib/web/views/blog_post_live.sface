@@ -50,13 +50,6 @@
           permalink={current_url(@__context__)}
           showing_within={:blog}
         />
-        <!-- <Bonfire.UI.Social.Activity.ReactionsLive
-          object={@object}
-          activity={@activity}
-          object_type={Bonfire.Data.Social.Post}
-          permalink={current_url(@__context__)}
-          showing_within={:blog}
-        /> -->
       </div>
 
       <Bonfire.UI.Social.ThreadLive id={ulid(@object)} thread_id={ulid(@object)} />
