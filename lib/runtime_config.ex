@@ -1,4 +1,5 @@
 defmodule Bonfire.Pages.RuntimeConfig do
+  @behaviour Bonfire.Common.ConfigModule
   def config_module, do: true
 
   alias Bonfire.Ecto.Acts, as: Ecto
