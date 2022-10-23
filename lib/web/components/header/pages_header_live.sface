@@ -135,5 +135,5 @@
       </ul>
     </div>
   </div>
-  <Bonfire.Classify.Web.TopicsSubheaderLive id={:topics_subheader} />
+  <!-- <Bonfire.Classify.Web.TopicsSubheaderLive id={:topics_subheader} /> -->
 </div>
