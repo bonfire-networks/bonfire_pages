@@ -65,7 +65,7 @@ defmodule Bonfire.Pages do
   def list_paginated(filters \\ [], opts \\ []) do
     query(filters, opts)
     # return a page of items (reverse chronological) + pagination metadata
-    |> Bonfire.Common.Repo.many_paginated(opts[:paginate])
+    |> repo().many_paginated(opts[:paginate])
   end
 
   def run_epic(type, options, module \\ __MODULE__, on \\ :page) do

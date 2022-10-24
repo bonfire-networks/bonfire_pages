@@ -1,7 +1,7 @@
 <div
   class="sticky top-0 z-20 flex flex-col w-full shadow border-base-content/10 bg-base-300"
   x-data="{open: false}"
-  >
+>
   <div class="flex items-center border-b border-base-content/10">
     <div class="ml-4">
       <Bonfire.UI.Common.AppsLive
@@ -104,7 +104,7 @@
       id="mobile-menu"
       x-show="open"
       style="display: none;"
-      >
+    >
       <ul class="p-0 menu">
         <li>
           <a href="/docs" class="">

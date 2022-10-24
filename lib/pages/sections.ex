@@ -22,7 +22,7 @@ defmodule Bonfire.Pages.Sections do
   def list_paginated(filters \\ [], opts \\ []) do
     query(filters, opts)
     # return a page of items (reverse chronological) + pagination metadata
-    |> Bonfire.Common.Repo.many_paginated(opts[:paginate])
+    |> repo().many_paginated(opts[:paginate])
   end
 
   def upsert(options \\ []) do
@@ -54,15 +54,15 @@ defmodule Bonfire.Pages.Sections do
            )
            # |> Ecto.Changeset.apply_action(:insert)
            |> dump(),
-         {:ok, ins} <- Bonfire.Common.Repo.insert(cs) do
+         {:ok, ins} <- repo().insert(cs) do
       {:ok, ins}
     else
       # poor man's upsert - TODO fix drag and drop ordering and make better and generic
       {:error, %Ecto.Changeset{} = cs} ->
-        Bonfire.Common.Repo.upsert(cs, [:rank])
+        repo().upsert(cs, [:rank])
 
       %Ecto.Changeset{} = cs ->
-        Bonfire.Common.Repo.upsert(cs, [:rank])
+        repo().upsert(cs, [:rank])
 
       e ->
         error(e)
@@ -71,7 +71,7 @@ defmodule Bonfire.Pages.Sections do
 
   # defp upsert_attempt(cs, position) do
   #   cs
-  #   |> Bonfire.Common.Repo.upsert([rank: e(cs, :changes, :rank_set, nil) || position], [
+  #   |> repo().upsert([rank: e(cs, :changes, :rank_set, nil) || position], [
   #     :item_id,
   #     :scope_id
   #   ])
@@ -85,7 +85,7 @@ defmodule Bonfire.Pages.Sections do
             p.scope_id == ^page_id
       )
 
-    with {1, update} <- Bonfire.Common.Repo.delete_all(query) do
+    with {1, update} <- repo().delete_all(query) do
       {:ok, update}
     end
   end
