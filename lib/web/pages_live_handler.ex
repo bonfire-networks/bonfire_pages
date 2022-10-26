@@ -17,7 +17,7 @@ defmodule Bonfire.Pages.LiveHandler do
     # |> debug("post attrs")
 
     # debug(e(socket.assigns, :showing_within, nil), "SHOWING")
-    current_user = current_user_required(socket)
+    current_user = current_user_required!(socket)
 
     with %{} <- current_user || {:error, "You must be logged in"},
          # fail before uploading
@@ -80,7 +80,7 @@ defmodule Bonfire.Pages.LiveHandler do
     # |> debug("post attrs")
 
     # debug(e(socket.assigns, :showing_within, nil), "SHOWING")
-    current_user = current_user_required(socket)
+    current_user = current_user_required!(socket)
 
     page_id = e(attrs, :reply_to, :thread_id, nil)
 
