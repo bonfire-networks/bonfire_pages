@@ -37,7 +37,8 @@
       </div> -->
 
       <Dynamic.Component
-        :if={module_enabled?(Bonfire.UI.Social.Activity.MediaLive, @__context__) and is_list(@media) and @media != []}
+        :if={module_enabled?(Bonfire.UI.Social.Activity.MediaLive, @__context__) and is_list(@media) and
+          @media != []}
         module={Bonfire.UI.Social.Activity.MediaLive}
         media={@media}
         showing_within={:blog}
@@ -55,7 +56,7 @@
           showing_within={:blog}
         />
       </div>
-        <Dynamic.LiveComponent
+      <Dynamic.LiveComponent
         :if={module_enabled?(Bonfire.UI.Social.ThreadLive) and @current_user}
         module={Bonfire.UI.Social.ThreadLive}
         id={ulid(@object)}
