@@ -11,14 +11,17 @@
       <div class="w-full max-w-full text-3xl font-bold bg-base-300 input input-lg">
         {e(@object, :post_content, :name, nil) || l("Blog post")}
       </div>
-
-      <Bonfire.UI.Social.Activity.MediaLive
-        if={@main_image}
+      <Dynamic.Component
+        :if={module_enabled?(Bonfire.UI.Social.Activity.MediaLive, @__context__) and @main_image}
+        module={Bonfire.UI.Social.Activity.MediaLive}
         media={[@main_image]}
         showing_within={:blog}
       />
 
-      <Bonfire.UI.Social.Activity.NoteLive
+      <Dynamic.Component
+        :if={module_enabled?(Bonfire.UI.Social.Activity.NoteLive, @__context__)}
+        module={Bonfire.UI.Social.Activity.NoteLive}
+        media={[@main_image]}
         object={@object}
         activity={@activity}
         permalink={current_url(@__context__)}
@@ -33,8 +36,9 @@
         </div>
       </div> -->
 
-      <Bonfire.UI.Social.Activity.MediaLive
-        if={is_list(@media) and @media != []}
+      <Dynamic.Component
+        :if={module_enabled?(Bonfire.UI.Social.Activity.MediaLive, @__context__) and is_list(@media) and @media != []}
+        module={Bonfire.UI.Social.Activity.MediaLive}
         media={@media}
         showing_within={:blog}
         viewing_main_object
@@ -51,8 +55,12 @@
           showing_within={:blog}
         />
       </div>
-
-      <Bonfire.UI.Social.ThreadLive id={ulid(@object)} thread_id={ulid(@object)} />
+        <Dynamic.LiveComponent
+        :if={module_enabled?(Bonfire.UI.Social.ThreadLive) and @current_user}
+        module={Bonfire.UI.Social.ThreadLive}
+        id={ulid(@object)}
+        thread_id={ulid(@object)}
+      />
     </article>
   </div>
 </div>
