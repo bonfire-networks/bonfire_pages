@@ -97,6 +97,7 @@
           showing_within={@showing_within}
           uploads={@uploads}
           uploaded_files={@uploaded_files}
+          submit_label={l("Edit")}
         />
       </div>
     </div>
