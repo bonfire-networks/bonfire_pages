@@ -5,7 +5,7 @@
 >
   <LivePatch
     :for={{tab, tab_name} <- [list: l("Pages"), nav: l("Site Navigation")]}
-    to={"/pages/tab/#{tab}"}
+    to={~p"/pages/tab/#{tab}"}
     class="flex px-2 pt-2 text-base capitalize md:px-4 hover:bg-base-content/10 group place-content-center"
   >
     <div class={
@@ -53,7 +53,7 @@
       )}</p>
     <div class="justify-end card-actions">
       <a href={Bonfire.Pages.page_path(page, @__context__)} class="btn btn-primary">{l("View")}</a>
-      <LiveRedirect to={"/pages/edit/#{page_id}"} class="btn btn-primary">{l("Edit")}</LiveRedirect>
+      <LiveRedirect to={~p"/pages/edit/#{page_id}"} class="btn btn-primary">{l("Edit")}</LiveRedirect>
     </div>
   </div>
 </div> -->
