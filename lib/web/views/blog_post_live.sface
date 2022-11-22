@@ -67,11 +67,10 @@
 </div>
 
 <!-- include smart input for replying -->
-<Bonfire.UI.Common.SmartInputContainerLive
+<!-- <Bonfire.UI.Common.SmartInputContainerLive
   showing_within={:blog}
   hide_smart_input
   reply_to_id={ulid(@object)}
   context_id={ulid(@object)}
-/>
-<!-- to_boundaries={@object_boundary}
-     -->
+/> -->
+<!-- to_boundaries={@object_boundary} -->
