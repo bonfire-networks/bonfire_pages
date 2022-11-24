@@ -20,7 +20,7 @@ defmodule Bonfire.Pages.Web.BlogPostLive do
        socket,
        full_page: true,
        # we include it directly instead
-       hide_smart_input: true,
+       smart_input_opts: [inline_only: true],
        page: "blog_post",
        page_title: l("Post"),
        nav_header: Bonfire.Pages.Web.PagesHeaderLive,
@@ -49,16 +49,17 @@ defmodule Bonfire.Pages.Web.BlogPostLive do
      |> redirect_to(path(:write))}
   end
 
-  def handle_params(params, uri, socket) do
-    # poor man's hook I guess
-    with {_, socket} <- Bonfire.UI.Common.LiveHandlers.handle_params(params, uri, socket) do
-      undead_params(socket, fn ->
-        do_handle_params(params, uri, socket)
-      end)
-    end
-  end
+  def handle_params(params, uri, socket),
+    do:
+      Bonfire.UI.Common.LiveHandlers.handle_params(
+        params,
+        uri,
+        socket,
+        __MODULE__,
+        &do_handle_params/3
+      )
 
-  def handle_event(action, attrs, socket),
+  def do_handle_event(action, attrs, socket),
     do: Bonfire.UI.Common.LiveHandlers.handle_event(action, attrs, socket, __MODULE__)
 
   def handle_info(info, socket),
@@ -96,4 +97,30 @@ defmodule Bonfire.Pages.Web.BlogPostLive do
   def filter_first([], _fun, acc) do
     {nil, Enum.reverse(acc)}
   end
+
+  def handle_params(params, uri, socket),
+    do:
+      Bonfire.UI.Common.LiveHandlers.handle_params(
+        params,
+        uri,
+        socket,
+        __MODULE__
+      )
+
+  def handle_event(
+        action,
+        attrs,
+        socket
+      ),
+      do:
+        Bonfire.UI.Common.LiveHandlers.handle_event(
+          action,
+          attrs,
+          socket,
+          __MODULE__,
+          &do_handle_event/3
+        )
+
+  def handle_info(info, socket),
+    do: Bonfire.UI.Common.LiveHandlers.handle_info(info, socket, __MODULE__)
 end

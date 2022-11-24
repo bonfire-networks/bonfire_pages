@@ -7,7 +7,7 @@
       autocomplete: "off",
       "phx-target": "#smart_input"
     }
-    class={if WriteEditorLive.use_rich_editor?(@with_rich_editor, @__context__),
+    class={if WriteEditorLive.use_rich_editor?(e(@smart_input_opts, :wysiwyg, true), @__context__),
       do: "with_editor flex-1",
       else: "with_textarea flex-1"}
   >
@@ -44,12 +44,14 @@
                 <WriteEditorLive
                   field_name="page[post_content][html_body]"
                   textarea_class={@textarea_class}
-                  smart_input_prompt={l(
-                    "Enter a plain text summary for the page (useful for showing in page lists, and for search engines)..."
-                  )}
-                  smart_input_opts={@smart_input_opts}
+                  smart_input_opts={@smart_input_opts ++
+                    [
+                      prompt:
+                        l(
+                          "Enter a plain text summary for the page (useful for showing in page lists, and for search engines)..."
+                        )
+                    ]}
                   insert_text={@insert_text}
-                  with_rich_editor={false}
                   thread_mode={@thread_mode}
                   showing_within={@showing_within}
                   advanced_mode

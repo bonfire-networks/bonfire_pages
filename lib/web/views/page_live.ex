@@ -29,10 +29,36 @@ defmodule Bonfire.Pages.Web.PageLive do
          context_id: id,
          object: object,
          without_sidebar: true,
-         hide_smart_input: true,
+         smart_input_opts: [inline_only: true],
          nav_header: Bonfire.Pages.Web.PagesHeaderLive
        )
        |> SEO.assign(object)}
     end
   end
+
+  def handle_params(params, uri, socket),
+    do:
+      Bonfire.UI.Common.LiveHandlers.handle_params(
+        params,
+        uri,
+        socket,
+        __MODULE__
+      )
+
+  def handle_info(info, socket),
+    do: Bonfire.UI.Common.LiveHandlers.handle_info(info, socket, __MODULE__)
+
+  def handle_event(
+        action,
+        attrs,
+        socket
+      ),
+      do:
+        Bonfire.UI.Common.LiveHandlers.handle_event(
+          action,
+          attrs,
+          socket,
+          __MODULE__
+          # &do_handle_event/3
+        )
 end

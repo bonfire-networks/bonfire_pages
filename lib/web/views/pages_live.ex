@@ -26,7 +26,7 @@ defmodule Bonfire.Pages.Web.PagesLive do
        selected_tab: e(params, "tab", :list),
        page_title: l("Pages"),
        create_object_type: :page,
-       smart_input_prompt: l("Create a page"),
+       smart_input_opts: [wysiwyg: false, prompt: l("Create a page")],
        pages: nil
      )}
   end
@@ -57,17 +57,7 @@ defmodule Bonfire.Pages.Web.PagesLive do
      )}
   end
 
-  def handle_params(params, uri, socket) do
-    # poor man's hook I guess
-    with {_, socket} <-
-           Bonfire.UI.Common.LiveHandlers.handle_params(params, uri, socket) do
-      undead_params(socket, fn ->
-        do_handle_params(params, uri, socket)
-      end)
-    end
-  end
-
-  def handle_event(
+  def do_handle_event(
         "dropped",
         %{
           "dragged_id" => dragged_id,
@@ -87,12 +77,29 @@ defmodule Bonfire.Pages.Web.PagesLive do
     {:noreply, socket}
   end
 
-  def handle_event(action, attrs, socket),
+  def handle_params(params, uri, socket),
     do:
-      Bonfire.UI.Common.LiveHandlers.handle_event(
-        action,
-        attrs,
+      Bonfire.UI.Common.LiveHandlers.handle_params(
+        params,
+        uri,
         socket,
         __MODULE__
       )
+
+  def handle_info(info, socket),
+    do: Bonfire.UI.Common.LiveHandlers.handle_info(info, socket, __MODULE__)
+
+  def handle_event(
+        action,
+        attrs,
+        socket
+      ),
+      do:
+        Bonfire.UI.Common.LiveHandlers.handle_event(
+          action,
+          attrs,
+          socket,
+          __MODULE__,
+          &do_handle_event/3
+        )
 end

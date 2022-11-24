@@ -69,7 +69,6 @@
 <!-- include smart input for replying -->
 <!-- <Bonfire.UI.Common.SmartInputContainerLive
   showing_within={:blog}
-  hide_smart_input
   reply_to_id={ulid(@object)}
   context_id={ulid(@object)}
 /> -->
