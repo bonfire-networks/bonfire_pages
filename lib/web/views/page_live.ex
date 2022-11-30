@@ -24,11 +24,11 @@ defmodule Bonfire.Pages.Web.PageLive do
        assign(
          socket,
          page: "page",
-         full_page: true,
+         without_widgets: true,
+         without_sidebar: true,
          page_title: e(object, :post_content, :name, nil) || l("Page"),
          context_id: id,
          object: object,
-         without_sidebar: true,
          smart_input_opts: [inline_only: true],
          nav_header: Bonfire.Pages.Web.PagesHeaderLive
        )

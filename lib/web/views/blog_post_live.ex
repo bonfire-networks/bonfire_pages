@@ -18,7 +18,7 @@ defmodule Bonfire.Pages.Web.BlogPostLive do
     {:ok,
      assign(
        socket,
-       full_page: true,
+       without_widgets: true,
        # we include it directly instead
        smart_input_opts: [inline_only: true],
        page: "blog_post",
