@@ -27,6 +27,7 @@
         permalink={current_url(@__context__)}
         viewing_main_object
         showing_within={:blog}
+        cw={false}
       />
 
       <!-- 
