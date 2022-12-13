@@ -7,7 +7,7 @@ defmodule Bonfire.Pages.LiveHandler do
   alias Bonfire.Pages.Section
   alias Ecto.Changeset
 
-  def do_handle_event("create_page", params, socket) do
+  def handle_event("create_page", params, socket) do
     attrs =
       params
       |> Map.merge(e(params, :page, %{}))
@@ -70,7 +70,7 @@ defmodule Bonfire.Pages.LiveHandler do
     end
   end
 
-  def do_handle_event("edit_section", params, socket) do
+  def handle_event("edit_section", params, socket) do
     attrs =
       params
       |> Map.merge(e(params, :section, %{}))
@@ -134,7 +134,7 @@ defmodule Bonfire.Pages.LiveHandler do
     end
   end
 
-  def do_handle_event("add_section", %{"section_id" => section_id} = params, socket) do
+  def handle_event("add_section", %{"section_id" => section_id} = params, socket) do
     page = e(socket.assigns, :object, nil) || e(params, "page_id", nil)
 
     Bonfire.Pages.Sections.put_in_page(ulid!(section_id), ulid!(page))
@@ -152,7 +152,7 @@ defmodule Bonfire.Pages.LiveHandler do
     }
   end
 
-  def do_handle_event("remove_section", %{"section_id" => section_id} = params, socket) do
+  def handle_event("remove_section", %{"section_id" => section_id} = params, socket) do
     page = e(socket.assigns, :object, nil) || e(params, "page_id", nil)
 
     Bonfire.Pages.Sections.remove_from_page(ulid!(section_id), ulid!(page))
@@ -178,7 +178,7 @@ defmodule Bonfire.Pages.LiveHandler do
   #   live_more(thread_id, [after: cursor], socket)
   # end
 
-  # def do_handle_event(
+  # def handle_event(
   #       "load_more",
   #       %{"after" => cursor} = attrs,
   #       %{assigns: %{thread_id: thread_id}} = socket
