@@ -18,7 +18,7 @@
           x-show="full_page"
           x-cloak
           class="btn btn-sm btn-circle btn-ghost"
-          @click="full_page = false"
+          x-on:click="full_page = false"
         >
           <Icon iconify="akar-icons:sidebar-right" class="w-4 h-4 text-base-content/70" />
         </div>
@@ -62,7 +62,7 @@
     <nav class="" role="navigation" aria-label={l("Post settings")}>
       <div class="flex items-center justify-between p-4 pt-6">
         <div class="font-semibold">{l("Post settings")}</div>
-        <div class="btn btn-sm btn-circle btn-ghost" @click="full_page = true">
+        <div class="btn btn-sm btn-circle btn-ghost" x-on:click="full_page = true">
           <Icon iconify="akar-icons:sidebar-right" class="w-4 h-4 text-base-content/70" />
         </div>
       </div>

@@ -55,7 +55,7 @@
               type="button"
               class="inline-flex items-center justify-center p-2 rounded-md text-base-content text-opacity-80 hover:text-opacity-100 hover:bg-base-200 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
               aria-controls="mobile-menu"
-              @click="open = !open"
+              x-on:click="open = !open"
               aria-expanded="false"
               x-bind:aria-expanded="open.toString()"
             >
