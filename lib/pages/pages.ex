@@ -69,7 +69,7 @@ defmodule Bonfire.Pages do
   end
 
   def run_epic(type, options, module \\ __MODULE__, on \\ :page) do
-    options = Keyword.merge(options, crash: true, debug: true, verbose: false)
+    options = Keyword.merge(options, crash: false, debug: true, verbose: false)
 
     epic =
       Epic.from_config!(module, type)
