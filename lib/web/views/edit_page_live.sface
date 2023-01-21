@@ -57,7 +57,7 @@
           </span>
         </label>
         <label class="label">
-          <!-- <span class="label-text-alt text-base-content/70">{Config.get(:host)}/</span> -->
+          <!-- <span class="label-text-alt text-base-content/70">{base_url()}/</span> -->
           <!-- TODO: editable -->
           <input
             type="text"

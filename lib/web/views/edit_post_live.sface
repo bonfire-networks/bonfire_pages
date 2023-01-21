@@ -72,7 +72,7 @@
           <span class="!text-sm w-full flex items-center justify-between flex-1 font-medium label-text">
             <span>{l("Post URL")}</span><a href="" class="btn btn-xs btn-primary">{l("View")}</a></span>
         </label>
-        <!-- <span class="label-text-alt text-base-content/70">{Config.get(:host)}/</span> -->
+        <!-- <span class="label-text-alt text-base-content/70">{base_url()}/</span> -->
         <!-- TODO: editable -->
         <input
           type="text"
