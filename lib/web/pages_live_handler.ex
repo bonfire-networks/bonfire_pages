@@ -59,12 +59,13 @@ defmodule Bonfire.Pages.LiveHandler do
       }
     else
       e ->
-        error(error_msg(e))
+        e = Errors.error_msg(e)
+        error(e)
 
         {
           :noreply,
           socket
-          |> assign_flash(:error, "Could not create 😢 (#{error_msg(e)})")
+          |> assign_flash(:error, "Could not create 😢 (#{e})")
           # |> patch_to(current_url(socket), fallback: "/error") # so the flash appears
         }
     end
@@ -123,12 +124,13 @@ defmodule Bonfire.Pages.LiveHandler do
       }
     else
       e ->
-        error(error_msg(e))
+        e = Errors.error_msg(e)
+        error(e)
 
         {
           :noreply,
           socket
-          |> assign_flash(:error, "Could not create 😢 (#{error_msg(e)})")
+          |> assign_flash(:error, "Could not create 😢 (#{e})")
           # |> patch_to(current_url(socket), fallback: "/error") # so the flash appears
         }
     end

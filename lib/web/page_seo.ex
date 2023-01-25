@@ -27,7 +27,7 @@ defimpl SEO.Build, for: Bonfire.Pages.Page do
         title: e(page, :post_content, :title, nil),
         type_detail:
           SEO.OpenGraph.Article.build(
-            published_time: date_from_pointer(page),
+            published_time: DatesTimes.date_from_pointer(page),
             creator:
               e(page, :created, :creator, :profile, :name, nil) ||
                 e(page, :created, :creator, :character, :username, nil),

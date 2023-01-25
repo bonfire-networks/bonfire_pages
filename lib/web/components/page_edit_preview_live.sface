@@ -1,7 +1,7 @@
 <div class="grow flex flex-col">
   <div class="text-lg font-bold">{e(@page, :post_content, :name, nil)}</div>
   <div class="text-sm font-light text-base-content/70">
-    {date_from_now(@page)}
+    {DatesTimes.date_from_now(@page)}
     {#if e(@page, :created, :creator, :profile, :name, nil)}
       {l("by")} {e(@page, :created, :creator, :profile, :name, nil)}
     {/if}
