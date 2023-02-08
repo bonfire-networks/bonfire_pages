@@ -19,7 +19,7 @@ defmodule Bonfire.Pages.Web.EditPostLive do
      assign(
        socket,
        without_widgets: true,
-       smart_input_opts: [inline_only: true],
+       smart_input_opts: %{inline_only: true},
        page: "edit_post",
        page_title: l("Edit Post")
      )}

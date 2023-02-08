@@ -29,7 +29,7 @@ defmodule Bonfire.Pages.Web.PageLive do
          page_title: e(object, :post_content, :name, nil) || l("Page"),
          context_id: id,
          object: object,
-         smart_input_opts: [inline_only: true],
+         smart_input_opts: %{inline_only: true},
          nav_header: Bonfire.Pages.Web.PagesHeaderLive
        )
        |> SEO.assign(object)}

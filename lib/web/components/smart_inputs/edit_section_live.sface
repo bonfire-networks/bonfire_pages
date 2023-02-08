@@ -61,7 +61,11 @@
                 <WriteEditorLive
                   field_name="section[post_content][html_body]"
                   textarea_class={@textarea_class}
-                  smart_input_opts={@smart_input_opts ++ [prompt: l("Enter the markdown, liquid, and/or HTML for the new section...")]}
+                  smart_input_opts={@smart_input_opts
+                  |> Map.put(
+                    :prompt,
+                    l("Enter the markdown, liquid, and/or HTML for the new section...")
+                  )}
                   insert_text={@insert_text}
                   thread_mode={@thread_mode}
                   showing_within={@showing_within}

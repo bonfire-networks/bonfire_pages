@@ -26,7 +26,7 @@ defmodule Bonfire.Pages.Web.PagesLive do
        selected_tab: e(params, "tab", :list),
        page_title: l("Pages"),
        create_object_type: :page,
-       smart_input_opts: [wysiwyg: false, prompt: l("Create a page")],
+       smart_input_opts: %{wysiwyg: false, prompt: l("Create a page")},
        pages: nil
      )}
   end

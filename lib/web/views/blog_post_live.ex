@@ -20,7 +20,7 @@ defmodule Bonfire.Pages.Web.BlogPostLive do
        socket,
        without_widgets: true,
        # we include it directly instead
-       smart_input_opts: [inline_only: true],
+       smart_input_opts: %{inline_only: true},
        page: "blog_post",
        page_title: l("Post"),
        nav_header: Bonfire.Pages.Web.PagesHeaderLive,

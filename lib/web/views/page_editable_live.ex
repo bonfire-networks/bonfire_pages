@@ -21,7 +21,7 @@ defmodule Bonfire.Pages.Web.PageEditableLive do
        page: "edit_page",
        page_title: l("Edit Page"),
        create_object_type: :section,
-       smart_input_opts: [inline_only: true, prompt: l("Add a section")],
+       smart_input_opts: %{inline_only: true, prompt: l("Add a section")},
        context_id: e(params, "id", nil),
        object: nil,
        without_sidebar: true,
