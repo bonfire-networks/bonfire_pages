@@ -2,10 +2,10 @@ defmodule Bonfire.Pages.LiveHandler do
   use Bonfire.UI.Common.Web, :live_handler
   import Untangle
 
-  alias Bonfire.Data.Social.PostContent
+  # alias Bonfire.Data.Social.PostContent
   alias Bonfire.Pages.Page
   alias Bonfire.Pages.Section
-  alias Ecto.Changeset
+  # alias Ecto.Changeset
 
   def handle_event("create_page", params, socket) do
     attrs =
@@ -105,7 +105,7 @@ defmodule Bonfire.Pages.LiveHandler do
              page_id: page_id
            ]
            |> debug("use opts for boundary + save fields in PostContent"),
-         {:ok, published} <- Bonfire.Pages.Sections.upsert(opts) do
+         {:ok, _published} <- Bonfire.Pages.Sections.upsert(opts) do
       # published
       # |> repo().maybe_preload([:post_content])
       # |> dump("created!")

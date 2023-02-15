@@ -31,7 +31,7 @@ defmodule Bonfire.Pages.Web.PagesLive do
      )}
   end
 
-  def do_handle_params(%{"tab" => "nav"} = params, uri, socket) do
+  def do_handle_params(%{"tab" => "nav"} = _params, _uri, socket) do
     {:noreply,
      assign(
        socket,
@@ -41,11 +41,11 @@ defmodule Bonfire.Pages.Web.PagesLive do
            object_type: [Bonfire.Pages.Page],
            current_user: current_user(socket)
          )
-         |> debug("lnav")
+        #  |> debug("lnav")
      )}
   end
 
-  def do_handle_params(params, uri, socket) do
+  def do_handle_params(_params, _uri, socket) do
     {:noreply,
      assign(
        socket,
@@ -62,7 +62,7 @@ defmodule Bonfire.Pages.Web.PagesLive do
         %{
           "dragged_id" => dragged_id,
           "dropped_index" => dropped_index
-        } = params,
+        } = _params,
         socket
       ) do
     debug(dragged_id: dragged_id)

@@ -11,7 +11,7 @@ defmodule Bonfire.Pages do
     page_path(post_content, opts)
   end
 
-  def page_path(%{id: id, name: title} = _post_content, opts) do
+  def page_path(%{id: id, name: title} = _post_content, _opts) do
     "/#{slug(title)}/page-#{id}"
   end
 
@@ -23,7 +23,7 @@ defmodule Bonfire.Pages do
   end
 
   def page_path(id, opts) when is_binary(id) do
-    with {:ok, page} <- get(id, opts) do
+    with {:ok, _page} <- get(id, opts) do
       page_path(opts)
     else
       _ ->

@@ -60,7 +60,7 @@ defmodule Bonfire.Pages.Web.PageEditableLive do
         %{
           "dragged_id" => "section:" <> dragged_id,
           "dropped_index" => dropped_index
-        } = params,
+        } = _params,
         socket
       ) do
     debug(dragged_id: dragged_id)

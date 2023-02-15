@@ -49,6 +49,7 @@ defmodule Bonfire.Pages.Web.BlogPostLive do
      |> redirect_to(path(:write))}
   end
 
+
   def handle_params(params, uri, socket),
     do:
       Bonfire.UI.Common.LiveHandlers.handle_params(
@@ -98,14 +99,14 @@ defmodule Bonfire.Pages.Web.BlogPostLive do
     {nil, Enum.reverse(acc)}
   end
 
-  def handle_params(params, uri, socket),
-    do:
-      Bonfire.UI.Common.LiveHandlers.handle_params(
-        params,
-        uri,
-        socket,
-        __MODULE__
-      )
+  # def handle_params(params, uri, socket),
+  #   do:
+  #     Bonfire.UI.Common.LiveHandlers.handle_params(
+  #       params,
+  #       uri,
+  #       socket,
+  #       __MODULE__
+  #     )
 
   def handle_event(
         action,
@@ -121,6 +122,6 @@ defmodule Bonfire.Pages.Web.BlogPostLive do
           &do_handle_event/3
         )
 
-  def handle_info(info, socket),
-    do: Bonfire.UI.Common.LiveHandlers.handle_info(info, socket, __MODULE__)
+  # def handle_info(info, socket),
+  #   do: Bonfire.UI.Common.LiveHandlers.handle_info(info, socket, __MODULE__)
 end
