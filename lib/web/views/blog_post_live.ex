@@ -49,7 +49,6 @@ defmodule Bonfire.Pages.Web.BlogPostLive do
      |> redirect_to(path(:write))}
   end
 
-
   def handle_params(params, uri, socket),
     do:
       Bonfire.UI.Common.LiveHandlers.handle_params(

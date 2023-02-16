@@ -41,7 +41,7 @@ defmodule Bonfire.Pages.Web.PagesLive do
            object_type: [Bonfire.Pages.Page],
            current_user: current_user(socket)
          )
-        #  |> debug("lnav")
+       #  |> debug("lnav")
      )}
   end
 
