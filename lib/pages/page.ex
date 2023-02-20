@@ -14,6 +14,7 @@ defmodule Bonfire.Pages.Page do
 end
 
 defmodule Bonfire.Pages.Page.Migration do
+  @moduledoc false
   import Pointers.Migration
   alias Bonfire.Pages.Page
 
