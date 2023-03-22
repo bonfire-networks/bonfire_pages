@@ -54,7 +54,7 @@ defmodule Bonfire.Pages.LiveHandler do
           :info,
           "#{l("Created!")}"
         )
-        |> Bonfire.UI.Common.SmartInputLive.reset_input()
+        |> Bonfire.UI.Common.SmartInput.LiveHandler.reset_input()
         |> patch_to(path(published))
       }
     else
@@ -117,7 +117,7 @@ defmodule Bonfire.Pages.LiveHandler do
           :info,
           l("Section saved!")
         )
-        |> Bonfire.UI.Common.SmartInputLive.reset_input()
+        |> Bonfire.UI.Common.SmartInput.LiveHandler.reset_input()
         # |> assign(reload: Pointers.ULID.generate())
         # current_url(socket), fallback: path(published))
         |> patch_to("/pages/edit/#{page_id}?reload=#{Pointers.ULID.generate()}")
