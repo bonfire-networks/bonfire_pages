@@ -1,24 +1,13 @@
 defmodule Bonfire.Pages.Web.PagesLive do
   use Bonfire.UI.Common.Web, :surface_live_view
-  alias Bonfire.UI.Me.LivePlugs
 
   declare_extension("Pages",
     icon: "noto:bookmark-tabs"
   )
 
-  def mount(params, session, socket) do
-    live_plug(params, session, socket, [
-      LivePlugs.LoadCurrentAccount,
-      LivePlugs.LoadCurrentUser,
-      # LivePlugs.LoadCurrentUserCircles,
-      Bonfire.UI.Common.LivePlugs.StaticChanged,
-      Bonfire.UI.Common.LivePlugs.Csrf,
-      Bonfire.UI.Common.LivePlugs.Locale,
-      &mounted/3
-    ])
-  end
+  on_mount {LivePlugs, [Bonfire.UI.Me.LivePlugs.LoadCurrentUser]}
 
-  defp mounted(params, _session, socket) do
+  def mount(params, _session, socket) do
     {:ok,
      assign(
        socket,

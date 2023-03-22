@@ -1,20 +1,9 @@
 defmodule Bonfire.Pages.Web.PageLive do
   use Bonfire.UI.Common.Web, :surface_live_view
-  alias Bonfire.UI.Me.LivePlugs
 
-  def mount(params, session, socket) do
-    live_plug(params, session, socket, [
-      LivePlugs.LoadCurrentAccount,
-      LivePlugs.LoadCurrentUser,
-      # LivePlugs.LoadCurrentUserCircles,
-      Bonfire.UI.Common.LivePlugs.StaticChanged,
-      Bonfire.UI.Common.LivePlugs.Csrf,
-      Bonfire.UI.Common.LivePlugs.Locale,
-      &mounted/3
-    ])
-  end
+  on_mount {LivePlugs, [Bonfire.UI.Me.LivePlugs.LoadCurrentUser]}
 
-  defp mounted(%{"id" => id}, _session, socket) do
+  def mount(%{"id" => id}, _session, socket) do
     # TODO: query pointer instead to support non-Page pages? Bonfire.Common.Pointers.one(id: id)
     with {:ok, object} <-
            Bonfire.Pages.get(ulid!(id))
