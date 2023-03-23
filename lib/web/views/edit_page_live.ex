@@ -10,8 +10,6 @@ defmodule Bonfire.Pages.Web.EditPageLive do
        without_widgets: true,
        page: "edit_page",
        page_title: l("Edit Page"),
-       create_object_type: :section,
-       smart_input_opts: %{prompt: l("Add a section")}
      )}
   end
 
@@ -20,17 +18,6 @@ defmodule Bonfire.Pages.Web.EditPageLive do
 
     with {:ok, section} <- Bonfire.Pages.Sections.get(section_id, socket) do
       socket
-      |> assign(
-        create_object_type: :section,
-        smart_input_opts: %{
-          open: true,
-          prompt: l("Edit section"),
-          wysiwyg: false,
-          id: ulid(section),
-          name: e(section, :post_content, :name, nil),
-          text: e(section, :post_content, :html_body, nil)
-        }
-      )
     else
       _ ->
         socket
