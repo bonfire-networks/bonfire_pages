@@ -9,7 +9,7 @@ defmodule Bonfire.Pages.Web.EditPageLive do
        socket,
        without_widgets: true,
        page: "edit_page",
-       page_title: l("Edit Page"),
+       page_title: l("Edit Page")
      )}
   end
 
