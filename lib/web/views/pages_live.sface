@@ -29,7 +29,7 @@
   >
     {#if @selected_tab == :nav}
       <div class="shrink btn btn-square btn-sm btn-ghost">
-        <Icon iconify="ic:round-drag-indicator" class="w-5 h-5" />
+        <#Icon iconify="ic:round-drag-indicator" class="w-5 h-5" />
       </div>
       <Bonfire.Pages.Web.PageEditPreviewLive page={e(page, :edge, :object, nil)} />
     {#else}

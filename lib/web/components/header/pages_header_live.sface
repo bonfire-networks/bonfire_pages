@@ -44,7 +44,7 @@
               </li>
               <li>
                 <a target="_blank" href={Bonfire.Application.repository()}>
-                  <Icon iconify="bi:git" class="w-6 h-6" />
+                  <#Icon iconify="bi:git" class="w-6 h-6" />
                   <span class="hidden lg:block">Get the code</span>
                 </a>
               </li>

@@ -7,14 +7,14 @@
     <!-- <header class="flex items-center justify-between mb-4">
       <div class="flex items-center gap-3 px-2">
         <a href="#" class="items-center normal-case btn btn-sm btn-ghost">
-          <Icon solid="ChevronLeft" class="w-5 h-5" />
+          <#Icon solid="ChevronLeft" class="w-5 h-5" />
           <div class="ml-1 text-sm">{l "Pages"}</div>
         </a>
         <div class="text-sm text-base-content/70">{l ("Edit page")}</div>
       </div>
       <div class="flex items-center gap-3">
         <div x-show="full_page" x-cloak class="btn btn-sm btn-circle btn-ghost" x-on:click="full_page = false">
-          <Icon iconify="akar-icons:sidebar-right" class="w-4 h-4 text-base-content/70" />
+          <#Icon iconify="akar-icons:sidebar-right" class="w-4 h-4 text-base-content/70" />
         </div>
       </div>
     </header> -->
@@ -41,7 +41,7 @@
       <div class="flex items-center justify-between p-4 pt-6">
         <div class="font-semibold">{l("Page settings")}</div>
         <div class="btn btn-sm btn-circle btn-ghost" x-on:click="full_page = true">
-          <Icon iconify="akar-icons:sidebar-right" class="w-4 h-4 text-base-content/70" />
+          <#Icon iconify="akar-icons:sidebar-right" class="w-4 h-4 text-base-content/70" />
         </div>
       </div>
 

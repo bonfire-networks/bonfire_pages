@@ -7,7 +7,7 @@
     <header class="flex items-center justify-between">
       <div class="flex items-center gap-3 px-2">
         <a href="#" class="items-center normal-case btn btn-sm btn-ghost">
-          <Icon solid="ChevronLeft" class="w-5 h-5" />
+          <#Icon solid="ChevronLeft" class="w-5 h-5" />
           <div class="ml-1 text-sm">{l("Posts")}</div>
         </a>
         <div class="text-sm text-base-content/70">{l("New post")}</div>
@@ -20,7 +20,7 @@
           class="btn btn-sm btn-circle btn-ghost"
           x-on:click="full_page = false"
         >
-          <Icon iconify="akar-icons:sidebar-right" class="w-4 h-4 text-base-content/70" />
+          <#Icon iconify="akar-icons:sidebar-right" class="w-4 h-4 text-base-content/70" />
         </div>
       </div>
     </header>
@@ -28,7 +28,7 @@
     <article class="max-w-screen-md mx-auto mt-16">
       <!-- HERE WE SHOULD USE OUR UPLOAD_BUTTON COMP -->
       <label class="inline-flex items-center gap-2 mb-2 ml-2 font-light normal-case btn btn-ghost text-base-content/70 btn-sm">
-        <Icon solid="PaperClip" class="w-4 h-4 mx-auto" />
+        <#Icon solid="PaperClip" class="w-4 h-4 mx-auto" />
         <span>{l("Add a feature image")}</span>
       </label>
 
@@ -63,7 +63,7 @@
       <div class="flex items-center justify-between p-4 pt-6">
         <div class="font-semibold">{l("Post settings")}</div>
         <div class="btn btn-sm btn-circle btn-ghost" x-on:click="full_page = true">
-          <Icon iconify="akar-icons:sidebar-right" class="w-4 h-4 text-base-content/70" />
+          <#Icon iconify="akar-icons:sidebar-right" class="w-4 h-4 text-base-content/70" />
         </div>
       </div>
 
