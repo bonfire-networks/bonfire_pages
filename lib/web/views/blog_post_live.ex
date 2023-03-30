@@ -25,8 +25,8 @@ defmodule Bonfire.Pages.Web.BlogPostLive do
      socket
      |> assign(
        post_id: id,
-       url: url,
-       reply_to_id: e(params, "reply_to_id", id)
+       url: url
+       #  reply_to_id: e(params, "reply_to_id", id)
      )
      |> Bonfire.Social.Objects.LiveHandler.load_object_assigns()
      |> prepare_media()}
