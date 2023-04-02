@@ -29,6 +29,10 @@ defmodule Bonfire.Pages.Web.BlogPostLive do
        #  reply_to_id: e(params, "reply_to_id", id)
      )
      |> Bonfire.Social.Objects.LiveHandler.load_object_assigns()
+     |> assign_new(
+       :activity_component_id,
+       "blog-" <> (Enums.id(@activity) || Enums.id(@object) || "no-id")
+     )
      |> prepare_media()}
   end
 

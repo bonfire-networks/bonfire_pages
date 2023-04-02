@@ -4,10 +4,7 @@
   class="grid gap-8 grid-cols-[1fr_280px]"
 >
   <div>
-    <article
-      class="max-w-screen-md mx-auto mt-16"
-      id={"activity--" <> (ulid(@activity) || e(@object, :id, "no-id"))}
-    >
+    <article class="max-w-screen-md mx-auto mt-16" id={@activity_component_id}>
       <div class="w-full max-w-full text-3xl font-bold bg-base-300 input input-lg">
         {e(@object, :post_content, :name, nil) || l("Blog post")}
       </div>
@@ -52,6 +49,7 @@
           module={Bonfire.UI.Social.Activity.ReactionsLive}
           object={@object}
           activity={@activity}
+          activity_component_id={@activity_component_id}
           object_type={Bonfire.Data.Social.Post}
           permalink={current_url(@__context__)}
           showing_within={:blog}
