@@ -16,7 +16,8 @@
   </form>
   <hr>
   <Form
-    for={:section}
+    for={%{}}
+    as={:section}
     submit="Bonfire.Pages:edit_section"
     action="Bonfire.Pages:edit_section"
     opts={
