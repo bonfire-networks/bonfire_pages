@@ -2,7 +2,7 @@
   <div data-group="sections" class="dropzone flex-colums">
     {#for %{item: %{id: section_id} = section} <-
         e(@object, :ranked, []) |> Enum.sort_by(&e(&1, :rank, nil))}
-      <div id={"section:#{section_id}"} class="relative group draggable">
+      <div id={"section-#{section_id}"} class="relative group draggable">
         <div class="absolute top-0 right-0 flex items-center gap-4 transition-opacity opacity-0 cursor-pointer group-hover:opacity-100">
           <div
             phx-click="Bonfire.Pages:remove_section"
