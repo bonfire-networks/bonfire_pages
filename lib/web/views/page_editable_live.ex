@@ -47,7 +47,7 @@ defmodule Bonfire.Pages.Web.PageEditableLive do
   def do_handle_event(
         "dropped",
         %{
-          "dragged_id" => "section:" <> dragged_id,
+          "dragged_id" => "section-" <> dragged_id,
           "dropped_index" => dropped_index
         } = _params,
         socket
@@ -68,7 +68,7 @@ defmodule Bonfire.Pages.Web.PageEditableLive do
   # def do_handle_event(
   #       "dropped",
   #       %{
-  #         "dragged_id" => "section:" <> dragged_id,
+  #         "dragged_id" => "section-" <> dragged_id,
   #         "dragged_from_id" => previous_bin,
   #         "dropped_to_id" => new_bin,
   #         "dropped_index" => dropped_index
