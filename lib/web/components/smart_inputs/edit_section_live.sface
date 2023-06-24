@@ -39,44 +39,6 @@
         "relative flex flex-col flex-1 h-full",
         "h-auto": @showing_within == :compose
       }>
-        <Inputs for={:post_content}>
-          <div x-show="!open_boundaries" class="flex-1">
-            <div display="style: none" x-show="title_open" x-transition>
-              <label for="title" class="sr-only">{l("Title")}</label>
-              <Field name={:name}>
-                <TextInput
-                  value={e(@smart_input_opts, :name, nil)}
-                  opts={
-                    placeholder: l("Enter a name for a new section")
-                  }
-                  class={
-                    "block w-full border-0 p-2 text-lg font-medium placeholder-base-content/70 bg-base-100 text-base-content border-b border-base-content/10",
-                    "!border !border-base-content/30 rounded-lg mb-2": e(@thread_mode, nil) == :flat
-                  }
-                />
-              </Field>
-            </div>
-            <label for="description" class="sr-only">{l("Description")}</label>
-            <Field name={:html_body}>
-              <div class={@textarea_container_class} :class={@textarea_container_class_alpine}>
-                <WriteEditorLive
-                  field_name="section[post_content][html_body]"
-                  textarea_class={@textarea_class}
-                  smart_input_opts={@smart_input_opts
-                  |> Map.put(
-                    :prompt,
-                    l("Enter the markdown, liquid, and/or HTML for the new section...")
-                  )}
-                  insert_text={@insert_text}
-                  thread_mode={@thread_mode}
-                  showing_within={@showing_within}
-                  advanced_mode
-                />
-              </div>
-            </Field>
-          </div>
-        </Inputs>
-
         <Bonfire.UI.Common.InputControlsLive
           smart_input_opts={@smart_input_opts}
           thread_mode={@thread_mode}
@@ -89,7 +51,45 @@
           uploads={@uploads}
           uploaded_files={@uploaded_files}
           submit_label={l("Edit")}
-        />
+        >
+          <Inputs for={:post_content}>
+            <div x-show="!open_boundaries" class="flex-1">
+              <div display="style: none" x-show="title_open" x-transition>
+                <label for="title" class="sr-only">{l("Title")}</label>
+                <Field name={:name}>
+                  <TextInput
+                    value={e(@smart_input_opts, :name, nil)}
+                    opts={
+                      placeholder: l("Enter a name for a new section")
+                    }
+                    class={
+                      "block w-full border-0 p-2 text-lg font-medium placeholder-base-content/70 bg-base-100 text-base-content border-b border-base-content/10",
+                      "!border !border-base-content/30 rounded-lg mb-2": e(@thread_mode, nil) == :flat
+                    }
+                  />
+                </Field>
+              </div>
+              <label for="description" class="sr-only">{l("Description")}</label>
+              <Field name={:html_body}>
+                <div class={@textarea_container_class} :class={@textarea_container_class_alpine}>
+                  <WriteEditorLive
+                    field_name="section[post_content][html_body]"
+                    textarea_class={@textarea_class}
+                    smart_input_opts={@smart_input_opts
+                    |> Map.put(
+                      :prompt,
+                      l("Enter the markdown, liquid, and/or HTML for the new section...")
+                    )}
+                    insert_text={@insert_text}
+                    thread_mode={@thread_mode}
+                    showing_within={@showing_within}
+                    advanced_mode
+                  />
+                </div>
+              </Field>
+            </div>
+          </Inputs>
+        </Bonfire.UI.Common.InputControlsLive>
       </div>
     </div>
   </Form>
