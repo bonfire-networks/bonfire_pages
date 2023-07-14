@@ -1,9 +1,7 @@
 defmodule Bonfire.Pages.Web.PagesLive do
   use Bonfire.UI.Common.Web, :surface_live_view
 
-  declare_extension("Pages",
-    icon: "noto:bookmark-tabs"
-  )
+  declare_extension("Pages", icon: "noto:bookmark-tabs", emoji: "📄")
 
   on_mount {LivePlugs, [Bonfire.UI.Me.LivePlugs.LoadCurrentUser]}
 
