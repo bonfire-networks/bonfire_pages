@@ -118,9 +118,9 @@ defmodule Bonfire.Pages.LiveHandler do
           l("Section saved!")
         )
         |> Bonfire.UI.Common.SmartInput.LiveHandler.reset_input()
-        # |> assign(reload: Pointers.ULID.generate())
+        # |> assign(reload: Text.random_string())
         # current_url(socket), fallback: path(published))
-        |> patch_to("/pages/edit/#{page_id}?reload=#{Pointers.ULID.generate()}")
+        |> patch_to("/pages/edit/#{page_id}?reload=#{Text.random_string()}")
       }
     else
       e ->
@@ -149,7 +149,7 @@ defmodule Bonfire.Pages.LiveHandler do
         :info,
         l("Added!")
       )
-      |> assign(reload: Pointers.ULID.generate())
+      |> assign(reload: Text.random_string())
       # |> patch_to(current_url(socket), fallback: path(page))
     }
   end
@@ -167,7 +167,7 @@ defmodule Bonfire.Pages.LiveHandler do
         :info,
         l("Removed!")
       )
-      # |> assign(reload: Pointers.ULID.generate())
+      # |> assign(reload: Text.random_string())
       |> patch_to(current_url(socket), fallback: path(page))
     }
   end

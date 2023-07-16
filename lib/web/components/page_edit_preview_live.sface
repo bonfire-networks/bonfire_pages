@@ -8,11 +8,7 @@
   </div>
 </div>
 <div class="flex items-center gap-2">
-  <Bonfire.Boundaries.Web.BoundaryIconLive
-    with_label
-    id={"boundary-#{ulid(@page)}"}
-    object={@page}
-  />
+  <Bonfire.Boundaries.Web.BoundaryIconLive with_label id={"boundary_#{id(@page)}"} object={@page} />
   <a
     href={Bonfire.Pages.page_path(@page, @__context__)}
     target="_blank"
