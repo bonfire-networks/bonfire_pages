@@ -22,7 +22,7 @@ defmodule Bonfire.Pages.Web.EditSectionLive do
   prop uploads, :any, default: nil
   prop uploaded_files, :list, default: nil
   prop title_prompt, :string, default: nil
-  prop show_select_recipients, :boolean, default: false
+
   prop open_boundaries, :boolean, default: false
   prop boundaries_modal_id, :string, default: :sidebar_composer
 
