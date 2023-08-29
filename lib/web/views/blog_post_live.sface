@@ -56,7 +56,7 @@
         />
       </div>
       <Dynamic.LiveComponent
-        :if={module_enabled?(Bonfire.UI.Social.ThreadLive) and @current_user}
+        :if={module_enabled?(Bonfire.UI.Social.ThreadLive) and current_user(@__context__)}
         module={Bonfire.UI.Social.ThreadLive}
         id={ulid(@object)}
         thread_id={ulid(@object)}
