@@ -38,7 +38,7 @@
   </div>
 </div>
 
-<!-- <div
+{!-- <div
   :for={%{id: page_id} = page <- e(@pages, :edges, [])}
   class="shadow-xl card card-compact w-96 bg-base-100"
 >
@@ -56,4 +56,4 @@
       <LiveRedirect to={~p"/pages/edit/#{page_id}"} class="btn btn-primary">{l("Edit")}</LiveRedirect>
     </div>
   </div>
-</div> -->
+</div> --}

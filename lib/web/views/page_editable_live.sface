@@ -17,10 +17,10 @@
             data-tip={l("Edit this section")}
           ><#Icon class="w-5 h-5" solid="Pencil" /></a>
 
-          <!-- <div class="tooltip" data-tip={l("Drag to move this section")}><#Icon
+          {!-- <div class="tooltip" data-tip={l("Drag to move this section")}><#Icon
           iconify="iconoir:drag-hand-gesture"
           class="w-3 h-3"
-        /></div> -->
+        /></div> --}
         </div>
         {templated(e(section, :post_content, :html_body, nil))}
       </div>
@@ -31,5 +31,5 @@
   </div>
 </div>
 
-<!-- Support dynamic styling with Tailwind JIT -->
+{!-- Support dynamic styling with Tailwind JIT --}
 <script src="https://unpkg.com/tailwindcss-jit-cdn" />

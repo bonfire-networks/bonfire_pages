@@ -4,7 +4,7 @@
   class="grid gap-8 grid-cols-[1fr_280px]"
 >
   <div>
-    <!-- <header class="flex items-center justify-between mb-4">
+    {!-- <header class="flex items-center justify-between mb-4">
       <div class="flex items-center gap-3 px-2">
         <a href="#" class="items-center normal-case btn btn-sm btn-ghost">
           <#Icon solid="ChevronLeft" class="w-5 h-5" />
@@ -17,11 +17,11 @@
           <#Icon iconify="akar-icons:sidebar-right" class="w-4 h-4 text-base-content/70" />
         </div>
       </div>
-    </header> -->
+    </header> --}
 
     <div class="ml-4 mt-2 border shadow border-base-content/5 mockup-window bg-base-100 h-[calc(var(--inner-window-height)_-_75px)]">
-      <!-- TODO: put page title in mockup-window titlebar -->
-      <!-- TODO: add a toggle between desktop and mobile view (the frame size and the style: `mockup-window` vs `mockup-phone`) -->
+      {!-- TODO: put page title in mockup-window titlebar --}
+      {!-- TODO: add a toggle between desktop and mobile view (the frame size and the style: `mockup-window` vs `mockup-phone`) --}
       <iframe src={"/pages/editable/#{@context_id}?reload=#{@reload}"} class="w-full h-full" />
     </div>
   </div>
@@ -57,8 +57,8 @@
           </span>
         </label>
         <label class="label">
-          <!-- <span class="label-text-alt text-base-content/70">{base_url()}/</span> -->
-          <!-- TODO: editable -->
+          {!-- <span class="label-text-alt text-base-content/70">{base_url()}/</span> --}
+          {!-- TODO: editable --}
           <input
             type="text"
             readonly="readonly"
@@ -69,7 +69,7 @@
         </label>
       </div>
 
-      <!-- 
+      {!-- 
       TODO: for now boundaries are set on creation
       <div class="w-full max-w-xs p-3 pt-0 form-control">
         <label class="label">
@@ -80,7 +80,7 @@
           <option>Local members only</option>
           <option>Only admins</option>
         </select>
-      </div> -->
+      </div> --}
 
       <div class="p-3 pt-0 form-control">
         <form name="pin" phx-change="Bonfire.Social.Pins:pin">

@@ -27,12 +27,12 @@
         cw={false}
       />
 
-      <!-- 
+      {!-- 
       <div class="w-full input-sizer stacked">
         <div class="w-full pl-6 mt-4 text-lg bg-base-300">
         {templated(e(@object, :post_content, :html_body, nil)) || "Text goes here"}
         </div>
-      </div> -->
+      </div> --}
 
       <Dynamic.Component
         :if={module_enabled?(Bonfire.UI.Social.Activity.MediaLive, @__context__) and is_list(@media) and
@@ -65,10 +65,10 @@
   </div>
 </div>
 
-<!-- include smart input for replying -->
-<!-- <Bonfire.UI.Common.SmartInputContainerLive
+{!-- include smart input for replying --}
+{!-- <Bonfire.UI.Common.SmartInputContainerLive
   showing_within={:blog}
   reply_to_id={ulid(@object)}
   context_id={ulid(@object)}
-/> -->
-<!-- to_boundaries={@object_boundary} -->
+/> --}
+{!-- to_boundaries={@object_boundary} --}

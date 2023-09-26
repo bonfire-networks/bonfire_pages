@@ -26,7 +26,7 @@
     </header>
 
     <article class="max-w-screen-md mx-auto mt-16">
-      <!-- HERE WE SHOULD USE OUR UPLOAD_BUTTON COMP -->
+      {!-- HERE WE SHOULD USE OUR UPLOAD_BUTTON COMP --}
       <label class="inline-flex items-center gap-2 mb-2 ml-2 font-light normal-case btn btn-ghost text-base-content/70 btn-sm">
         <#Icon solid="PaperClip" class="w-4 h-4 mx-auto" />
         <span>{l("Add a feature image")}</span>
@@ -72,8 +72,8 @@
           <span class="!text-sm w-full flex items-center justify-between flex-1 font-medium label-text">
             <span>{l("Post URL")}</span><a href="" class="btn btn-xs btn-primary">{l("View")}</a></span>
         </label>
-        <!-- <span class="label-text-alt text-base-content/70">{base_url()}/</span> -->
-        <!-- TODO: editable -->
+        {!-- <span class="label-text-alt text-base-content/70">{base_url()}/</span> --}
+        {!-- TODO: editable --}
         <input
           type="text"
           readonly="readonly"
@@ -118,14 +118,14 @@
         </label>
       </div>
 
-      <!-- <Dynamic.Component
+      {!-- <Dynamic.Component
         :if={module_enabled?(Bonfire.UI.Social.Activity.DeleteObjectLive, @__context__)}
         module={Bonfire.UI.Social.Activity.DeleteObjectLive}
         object={@object}
         object_type_readable={l("page")}
         open_btn_class="flex items-center gap-2 p-3 text-sm link link-hover text-error"
         redirect_after={~p"/pages"}
-      /> -->
+      /> --}
     </nav>
   </div>
 </div>
