@@ -13,7 +13,7 @@ defmodule Bonfire.Pages.Web.PageLive do
        assign(
          socket,
          page: "page",
-         without_widgets: true,
+         without_secondary_widgets: true,
          without_sidebar: true,
          page_title: e(object, :post_content, :name, nil) || l("Page"),
          context_id: id,

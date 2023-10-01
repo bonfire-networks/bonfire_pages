@@ -7,7 +7,7 @@ defmodule Bonfire.Pages.Web.EditPageLive do
     {:ok,
      assign(
        socket,
-       without_widgets: true,
+       without_secondary_widgets: true,
        page: "edit_page",
        page_title: l("Edit Page")
      )}
