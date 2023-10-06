@@ -101,7 +101,7 @@
       </div>
 
       <div class="p-3 pt-0 form-control">
-        <form name="settings" phx-change="Bonfire.Me.Settings:set">
+        <form name="settings" phx-change="Bonfire.Common.Settings:set">
           <input name="scope" value={:instance} type="hidden">
           <label class="cursor-pointer label">
             <span class="label-text">Make it the homepage</span>
