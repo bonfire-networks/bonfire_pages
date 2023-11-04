@@ -42,6 +42,22 @@ defmodule Bonfire.Pages do
 
   def slug(_), do: "-"
 
+  def summary(page) do
+    # dump(page)
+
+    Text.truncate(
+      Text.text_only(
+        templated(
+          e(page, :post_content, :summary, nil) || e(page, :post_content, :html_body, nil)
+        )
+        |> dump
+      )
+      |> dump,
+      300
+    )
+    |> dump
+  end
+
   def create(options \\ []) do
     # TODO: sanitise HTML to a certain extent depending on is_admin and/or boundaries
     run_epic(:create, options ++ [do_not_strip_html: true])
