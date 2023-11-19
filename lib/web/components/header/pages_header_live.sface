@@ -5,7 +5,7 @@
   <div class="flex items-center border-b border-base-content/10">
     <div class="ml-4">
       <Bonfire.UI.Common.AppsLive
-        :if={not is_nil(current_user(@__context__))}
+        :if={not is_nil(current_user_id(@__context__))}
         nav_items={@nav_items}
         sidebar_widgets={@sidebar_widgets}
         page={@page}
