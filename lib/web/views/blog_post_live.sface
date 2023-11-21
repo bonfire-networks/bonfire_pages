@@ -44,15 +44,17 @@
       />
 
       <div class="flex items-center justify-end flex-1 mt-0 -ml-2 space-x-4 feed-clickable">
-        <Dynamic.Component
-          :if={module_enabled?(Bonfire.UI.Social.Activity.ReactionsLive, @__context__)}
-          module={Bonfire.UI.Social.Activity.ReactionsLive}
+        <Dynamic.LiveComponent
+          :if={module_enabled?(Bonfire.UI.Social.Activity.ActionsLive, @__context__)}
+          module={Bonfire.UI.Social.Activity.ActionsLive}
+          id="blog_action"
           object={@object}
           activity={@activity}
           activity_component_id={@activity_component_id}
           object_type={Bonfire.Data.Social.Post}
           permalink={current_url(@__context__)}
           showing_within={:blog}
+          hide_more_actions
         />
       </div>
       <Dynamic.LiveComponent
