@@ -30,4 +30,7 @@ defmodule Bonfire.Pages.Web.CreatePageLive do
   prop textarea_container_class, :css_class
   prop textarea_container_class_alpine, :string
   prop textarea_class, :css_class
+
+  @behaviour Bonfire.UI.Common.SmartInputModule
+  def smart_input_module, do: [:page, Bonfire.Pages.Page]
 end

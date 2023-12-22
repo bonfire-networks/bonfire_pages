@@ -31,6 +31,9 @@ defmodule Bonfire.Pages.Web.EditSectionLive do
   prop textarea_container_class_alpine, :string
   prop textarea_class, :css_class
 
+  @behaviour Bonfire.UI.Common.SmartInputModule
+  def smart_input_module, do: [:section, Bonfire.Pages.Section]
+
   def available_sections() do
     Bonfire.Pages.Sections.list_paginated([], paginate: [limit: 100])
     # |> debug("lsections")
