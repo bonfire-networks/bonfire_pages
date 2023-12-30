@@ -8,16 +8,15 @@
       <div class="w-full max-w-full text-3xl font-bold bg-base-300 input input-lg">
         {e(@object, :post_content, :name, nil) || l("Blog post")}
       </div>
-      <Dynamic.Component
-        :if={module_enabled?(Bonfire.UI.Social.Activity.MediaLive, @__context__) and @main_image}
-        module={Bonfire.UI.Social.Activity.MediaLive}
+      <StatelessComponent
+        :if={@main_image}
+        module={maybe_component(Bonfire.UI.Social.Activity.MediaLive, @__context__)}
         media={[@main_image]}
         showing_within={:blog}
       />
 
-      <Dynamic.Component
-        :if={module_enabled?(Bonfire.UI.Social.Activity.NoteLive, @__context__)}
-        module={Bonfire.UI.Social.Activity.NoteLive}
+      <StatelessComponent
+        module={maybe_component(Bonfire.UI.Social.Activity.NoteLive, @__context__)}
         media={[@main_image]}
         object={@object}
         activity={@activity}
@@ -34,19 +33,18 @@
         </div>
       </div> --}
 
-      <Dynamic.Component
-        :if={module_enabled?(Bonfire.UI.Social.Activity.MediaLive, @__context__) and is_list(@media) and
+      <StatelessComponent
+        :if={is_list(@media) and
           @media != []}
-        module={Bonfire.UI.Social.Activity.MediaLive}
+        module={maybe_component(Bonfire.UI.Social.Activity.MediaLive, @__context__)}
         media={@media}
         showing_within={:blog}
         viewing_main_object
       />
 
       <div class="flex items-center justify-end flex-1 mt-0 -ml-2 space-x-4 feed-clickable">
-        <Dynamic.LiveComponent
-          :if={module_enabled?(Bonfire.UI.Social.Activity.ActionsLive, @__context__)}
-          module={Bonfire.UI.Social.Activity.ActionsLive}
+        <StatefulComponent
+          module={maybe_component(Bonfire.UI.Social.Activity.ActionsLive, @__context__)}
           id="blog_action"
           object={@object}
           activity={@activity}
@@ -57,9 +55,9 @@
           hide_more_actions
         />
       </div>
-      <Dynamic.LiveComponent
-        :if={module_enabled?(Bonfire.UI.Social.ThreadLive) and current_user(@__context__)}
-        module={Bonfire.UI.Social.ThreadLive}
+      <StatefulComponent
+        :if={current_user(@__context__)}
+        module={maybe_component(Bonfire.UI.Social.ThreadLive, @__context__)}
         id={ulid(@object)}
         thread_id={ulid(@object)}
       />
