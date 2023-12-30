@@ -1,11 +1,11 @@
 defmodule Bonfire.Pages.Section do
-  use Pointers.Virtual,
+  use Needle.Virtual,
     otp_app: :bonfire_pages,
     table_id: "3TAT1CC0NTENTSECT10N0NPAGE",
     source: "bonfire_pages_section"
 
   alias Bonfire.Pages.Section
-  alias Pointers.Changesets
+  alias Needle.Changesets
 
   virtual_schema do
   end
@@ -15,7 +15,7 @@ end
 
 defmodule Bonfire.Pages.Section.Migration do
   @moduledoc false
-  import Pointers.Migration
+  import Needle.Migration
   alias Bonfire.Pages.Section
 
   def migrate_section(), do: migrate_virtual(Section)

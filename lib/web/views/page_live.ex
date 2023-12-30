@@ -4,7 +4,7 @@ defmodule Bonfire.Pages.Web.PageLive do
   on_mount {LivePlugs, [Bonfire.UI.Me.LivePlugs.LoadCurrentUser]}
 
   def mount(%{"id" => id}, _session, socket) do
-    # TODO: query pointer instead to support non-Page pages? Bonfire.Common.Pointers.one(id: id)
+    # TODO: query pointer instead to support non-Page pages? Bonfire.Common.Needle.one(id: id)
     with {:ok, object} <-
            Bonfire.Pages.get(ulid!(id))
            #  |> debug()

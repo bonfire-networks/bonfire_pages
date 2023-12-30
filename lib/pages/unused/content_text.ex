@@ -1,10 +1,10 @@
 # defmodule Bonfire.Pages.Text do
-#   use Pointers.Mixin,
+#   use Needle.Mixin,
 #     otp_app: :bonfire_pages,
 #     source: "bonfire_pages_text"
 
 #   alias __MODULE__
-#   alias Pointers.Changesets
+#   alias Needle.Changesets
 
 #   mixin_schema do
 #     field(:markdown, :string)
@@ -17,7 +17,7 @@
 
 # defmodule Bonfire.Pages.Text.Migration do
 #   use Ecto.Migration
-#   import Pointers.Migration
+#   import Needle.Migration
 #   alias Bonfire.Pages.Text
 
 #   def migrate_content_text(dir \\ direction())
