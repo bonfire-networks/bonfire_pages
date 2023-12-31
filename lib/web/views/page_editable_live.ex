@@ -19,7 +19,7 @@ defmodule Bonfire.Pages.Web.PageEditableLive do
   end
 
   def do_handle_params(%{"id" => id} = params, _url, socket) do
-    # TODO: query pointer instead to support non-Page pages? Bonfire.Common.Needle.one(id: id)
+    # TODO: query pointer instead to support non-Page pages? Bonfire.Common.Needles.one(id: id)
     with {:ok, object} <-
            Bonfire.Pages.get(id)
            |> repo().maybe_preload(ranked: [item: [:post_content]]) do
