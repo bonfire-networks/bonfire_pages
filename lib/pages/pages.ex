@@ -1,5 +1,5 @@
 defmodule Bonfire.Pages do
-  use Bonfire.Common.Utils
+  use Bonfire.UI.Common
   use Bonfire.Common.Repo
 
   alias Bonfire.Pages.Page

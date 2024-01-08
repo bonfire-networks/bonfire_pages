@@ -1,4 +1,4 @@
-defmodule Bonfire.Pages do
+defmodule Bonfire.Pages.Test do
   use ExUnit.Case
 
   # TODO
