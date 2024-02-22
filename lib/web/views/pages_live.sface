@@ -3,7 +3,7 @@
   class="flex justify-start pt-2 mx-3 mt-8 border-t border-b md:mb-2 md:border-b-0 border-base-content/10 md:rounded-b-xl tabs bg-base-100"
   aria-label="Switch between timeline, posts, boosts, media tabs or other extensions enabled tabs"
 >
-  <LivePatch
+  <LinkPatchLive
     :for={{tab, tab_name} <- [list: l("Pages"), nav: l("Site Navigation")]}
     to={~p"/pages/tab/#{tab}"}
     class="flex px-2 pt-2 text-base capitalize md:px-4 hover:bg-base-content/10 group place-content-center"
@@ -14,7 +14,7 @@
     }>
       {tab_name}
     </div>
-  </LivePatch>
+  </LinkPatchLive>
 </nav>
 
 <div
@@ -53,7 +53,7 @@
       )}</p>
     <div class="justify-end card-actions">
       <a href={Bonfire.Pages.page_path(page, @__context__)} class="btn btn-primary">{l("View")}</a>
-      <LiveRedirect to={~p"/pages/edit/#{page_id}"} class="btn btn-primary">{l("Edit")}</LiveRedirect>
+      <LinkLive to={~p"/pages/edit/#{page_id}"} class="btn btn-primary">{l("Edit")}</LinkLive>
     </div>
   </div>
 </div> --}

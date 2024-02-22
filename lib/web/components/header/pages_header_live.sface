@@ -38,9 +38,9 @@
                 )
                 |> e(:edges, [])
                 |> debug("pinpage")}>
-                <LivePatch to={Bonfire.Pages.page_path(p)} class="">
+                <LinkPatchLive to={Bonfire.Pages.page_path(p)} class="">
                   <span class="text-base font-regular">{e(p, :name, nil)}</span>
-                </LivePatch>
+                </LinkPatchLive>
               </li>
               <li>
                 <a target="_blank" href={Bonfire.Application.repository()}>
