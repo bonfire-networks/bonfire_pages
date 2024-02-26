@@ -18,7 +18,7 @@ defmodule Bonfire.Pages.Web.PageEditableLive do
      )}
   end
 
-  def do_handle_params(%{"id" => id} = params, _url, socket) do
+  def handle_params(%{"id" => id} = params, _url, socket) do
     # TODO: query pointer instead to support non-Page pages? Bonfire.Common.Needles.one(id: id)
     with {:ok, object} <-
            Bonfire.Pages.get(id)
@@ -34,17 +34,7 @@ defmodule Bonfire.Pages.Web.PageEditableLive do
     end
   end
 
-  def handle_params(params, uri, socket),
-    do:
-      Bonfire.UI.Common.LiveHandlers.handle_params(
-        params,
-        uri,
-        socket,
-        __MODULE__,
-        &do_handle_params/3
-      )
-
-  def do_handle_event(
+  def handle_event(
         "dropped",
         %{
           "dragged_id" => "section-" <> dragged_id,
@@ -65,7 +55,7 @@ defmodule Bonfire.Pages.Web.PageEditableLive do
     {:noreply, socket}
   end
 
-  # def do_handle_event(
+  # def handle_event(
   #       "dropped",
   #       %{
   #         "dragged_id" => "section-" <> dragged_id,
@@ -91,21 +81,4 @@ defmodule Bonfire.Pages.Web.PageEditableLive do
 
   #   {:noreply, socket}
   # end
-
-  def handle_event(
-        action,
-        attrs,
-        socket
-      ),
-      do:
-        Bonfire.UI.Common.LiveHandlers.handle_event(
-          action,
-          attrs,
-          socket,
-          __MODULE__,
-          &do_handle_event/3
-        )
-
-  def handle_info(info, socket),
-    do: Bonfire.UI.Common.LiveHandlers.handle_info(info, socket, __MODULE__)
 end

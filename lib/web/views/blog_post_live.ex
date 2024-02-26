@@ -18,7 +18,7 @@ defmodule Bonfire.Pages.Web.BlogPostLive do
      )}
   end
 
-  def do_handle_params(%{"id" => id} = params, url, socket) when is_binary(id) do
+  def handle_params(%{"id" => id} = params, url, socket) when is_binary(id) do
     debug(id)
 
     {:noreply,
@@ -36,27 +36,11 @@ defmodule Bonfire.Pages.Web.BlogPostLive do
      |> prepare_media()}
   end
 
-  def do_handle_params(_params, _url, socket) do
+  def handle_params(_params, _url, socket) do
     {:noreply,
      socket
      |> redirect_to(path(:write))}
   end
-
-  def handle_params(params, uri, socket),
-    do:
-      Bonfire.UI.Common.LiveHandlers.handle_params(
-        params,
-        uri,
-        socket,
-        __MODULE__,
-        &do_handle_params/3
-      )
-
-  def do_handle_event(action, attrs, socket),
-    do: Bonfire.UI.Common.LiveHandlers.handle_event(action, attrs, socket, __MODULE__)
-
-  def handle_info(info, socket),
-    do: Bonfire.UI.Common.LiveHandlers.handle_info(info, socket, __MODULE__)
 
   def prepare_media(%{assigns: %{activity: %{media: media}} = _assigns} = socket)
       when is_list(media) do
@@ -90,30 +74,4 @@ defmodule Bonfire.Pages.Web.BlogPostLive do
   def filter_first([], _fun, acc) do
     {nil, Enum.reverse(acc)}
   end
-
-  # def handle_params(params, uri, socket),
-  #   do:
-  #     Bonfire.UI.Common.LiveHandlers.handle_params(
-  #       params,
-  #       uri,
-  #       socket,
-  #       __MODULE__
-  #     )
-
-  def handle_event(
-        action,
-        attrs,
-        socket
-      ),
-      do:
-        Bonfire.UI.Common.LiveHandlers.handle_event(
-          action,
-          attrs,
-          socket,
-          __MODULE__,
-          &do_handle_event/3
-        )
-
-  # def handle_info(info, socket),
-  #   do: Bonfire.UI.Common.LiveHandlers.handle_info(info, socket, __MODULE__)
 end

@@ -18,7 +18,7 @@ defmodule Bonfire.Pages.Web.PagesLive do
      )}
   end
 
-  def do_handle_params(%{"tab" => "nav"} = _params, _uri, socket) do
+  def handle_params(%{"tab" => "nav"} = _params, _uri, socket) do
     {:noreply,
      assign(
        socket,
@@ -32,7 +32,7 @@ defmodule Bonfire.Pages.Web.PagesLive do
      )}
   end
 
-  def do_handle_params(_params, _uri, socket) do
+  def handle_params(_params, _uri, socket) do
     {:noreply,
      assign(
        socket,
@@ -44,7 +44,7 @@ defmodule Bonfire.Pages.Web.PagesLive do
      )}
   end
 
-  def do_handle_event(
+  def handle_event(
         "dropped",
         %{
           "dragged_id" => dragged_id,
@@ -63,30 +63,4 @@ defmodule Bonfire.Pages.Web.PagesLive do
 
     {:noreply, socket}
   end
-
-  def handle_params(params, uri, socket),
-    do:
-      Bonfire.UI.Common.LiveHandlers.handle_params(
-        params,
-        uri,
-        socket,
-        __MODULE__
-      )
-
-  def handle_info(info, socket),
-    do: Bonfire.UI.Common.LiveHandlers.handle_info(info, socket, __MODULE__)
-
-  def handle_event(
-        action,
-        attrs,
-        socket
-      ),
-      do:
-        Bonfire.UI.Common.LiveHandlers.handle_event(
-          action,
-          attrs,
-          socket,
-          __MODULE__,
-          &do_handle_event/3
-        )
 end
