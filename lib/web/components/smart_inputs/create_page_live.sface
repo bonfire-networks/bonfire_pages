@@ -38,8 +38,10 @@
           submit_label={l("Create")}
         >
           <Inputs for={:post_content}>
-            <div x-show="!open_boundaries" class="flex-1">
-              <div display="style: none" x-show="title_open" x-transition>
+            <!-- <div x-show="!open_boundaries" class="flex-1"> -->
+            <div class="flex-1">
+              <!-- <div display="style: none" x-show="title_open" x-transition> -->
+              <div>
                 <label for="title" class="sr-only">{l("Title")}</label>
                 <Field name={:name}>
                   <TextInput

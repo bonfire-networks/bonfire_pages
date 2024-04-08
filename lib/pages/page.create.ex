@@ -58,7 +58,7 @@ defmodule Bonfire.Pages.Acts.Page.Create do
         id = epic.assigns[:options][id_key]
 
         attrs = Keyword.get(epic.assigns[:options], attrs_key, %{})
-        _boundary = epic.assigns[:options][:boundary]
+        # _boundary = epic.assigns[:options][:boundary]
 
         maybe_debug(
           epic,

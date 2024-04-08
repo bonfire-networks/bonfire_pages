@@ -51,9 +51,9 @@ defmodule Bonfire.Pages.Sections do
            })
            |> Ecto.Changeset.unique_constraint([:item_id, :scope_id],
              name: :bonfire_data_ranked_unique_per_scope
-           )
-           # |> Ecto.Changeset.apply_action(:insert)
-           |> dump(),
+           ),
+         # |> Ecto.Changeset.apply_action(:insert)
+         #  |> dump(),
          {:ok, ins} <- repo().insert(cs) do
       {:ok, ins}
     else

@@ -9,7 +9,6 @@ defmodule Bonfire.Pages.Web.EditSectionLive do
   alias Surface.Components.Form.Inputs
   alias Bonfire.UI.Common.WriteEditorLive
 
-  # prop target_component, :string, default: nil
   prop context_id, :string, default: nil
   prop create_object_type, :any, default: nil
   prop to_boundaries, :any, default: nil
