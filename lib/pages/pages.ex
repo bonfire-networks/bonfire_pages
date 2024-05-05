@@ -1,4 +1,6 @@
 defmodule Bonfire.Pages do
+  @moduledoc "./README.md" |> File.stream!() |> Enum.drop(1) |> Enum.join()
+
   use Bonfire.UI.Common
   use Bonfire.Common.Repo
 
