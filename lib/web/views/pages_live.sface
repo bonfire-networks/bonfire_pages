@@ -1,6 +1,6 @@
 <nav
   role="tabpanel"
-  class="flex justify-start pt-2 mx-3 mt-8 border-t border-b md:mb-2 md:border-b-0 border-base-content/10 md:rounded-b-xl tabs bg-base-100"
+  class="flex justify-start pt-2 mx-3 mt-8 border-t border-b md:mb-2 md:border-b-0 border-base-content/20 md:rounded-b-xl tabs bg-base-100"
   aria-label="Switch between timeline, posts, boosts, media tabs or other extensions enabled tabs"
 >
   <LinkPatchLive
@@ -20,7 +20,7 @@
 <div
   phx-hook="Sortable"
   id="the_navigation"
-  class="flex flex-col border-t divide-y border-base-content/10 divide-base-content/10 dropzone"
+  class="flex flex-col border-t divide-y border-base-content/20 divide-base-content/20 dropzone"
 >
   <div
     :for={%{id: id} = page <- e(@pages, :edges, [])}

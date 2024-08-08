@@ -35,7 +35,7 @@
     x-transition:leave="transform transition ease-in-out duration-500 sm:duration-700"
     x-transition:leave-start="translate-x-0"
     x-transition:leave-end="translate-x-full"
-    class="sticky top-[56px] -mt-6  shadow-lg -mr-4 overflow-y-auto border-l bg-base-200 widget border-base-content/10"
+    class="sticky top-[56px] -mt-6  shadow-lg -mr-4 overflow-y-auto border-l bg-base-200 widget border-base-content/20"
   >
     <nav class="" role="navigation" aria-label={l("Page settings")}>
       <div class="flex items-center justify-between p-4 pt-6">
