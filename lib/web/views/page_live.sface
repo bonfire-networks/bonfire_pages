@@ -1,7 +1,7 @@
-<div id={"page-#{ulid(@object)}"} class="">
+<div id={"page-#{uid(@object)}"} class="">
   <div data-group="sections" class="pb-4 flex-colums" style="min-height: 700px">
     {#for %{item: section} <- e(@object, :ranked, []) |> Enum.sort_by(&e(&1, :rank, nil))}
-      <div id={"section-#{ulid(section)}"} class="">
+      <div id={"section-#{uid(section)}"} class="">
         {templated(e(section, :post_content, :html_body, nil))}
       </div>
     {#else}

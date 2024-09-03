@@ -139,7 +139,7 @@ defmodule Bonfire.Pages.LiveHandler do
   def handle_event("add_section", %{"section_id" => section_id} = params, socket) do
     page = e(socket.assigns, :object, nil) || e(params, "page_id", nil)
 
-    Bonfire.Pages.Sections.put_in_page(ulid!(section_id), ulid!(page))
+    Bonfire.Pages.Sections.put_in_page(uid!(section_id), uid!(page))
     |> debug("put_in_page")
 
     {
@@ -157,7 +157,7 @@ defmodule Bonfire.Pages.LiveHandler do
   def handle_event("remove_section", %{"section_id" => section_id} = params, socket) do
     page = e(socket.assigns, :object, nil) || e(params, "page_id", nil)
 
-    Bonfire.Pages.Sections.remove_from_page(ulid!(section_id), ulid!(page))
+    Bonfire.Pages.Sections.remove_from_page(uid!(section_id), uid!(page))
     |> debug("remove_from_page")
 
     {

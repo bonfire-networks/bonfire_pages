@@ -58,8 +58,8 @@
       <StatefulComponent
         :if={current_user(@__context__)}
         module={maybe_component(Bonfire.UI.Social.ThreadLive, @__context__)}
-        id={ulid(@object)}
-        thread_id={ulid(@object)}
+        id={uid(@object)}
+        thread_id={uid(@object)}
       />
     </article>
   </div>
@@ -68,7 +68,7 @@
 {!-- include smart input for replying --}
 {!-- <Bonfire.UI.Common.SmartInputContainerLive
   showing_within={:blog}
-  reply_to_id={ulid(@object)}
-  context_id={ulid(@object)}
+  reply_to_id={uid(@object)}
+  context_id={uid(@object)}
 /> --}
 {!-- to_boundaries={@object_boundary} --}
