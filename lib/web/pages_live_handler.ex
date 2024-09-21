@@ -16,7 +16,7 @@ defmodule Bonfire.Pages.LiveHandler do
 
     # |> debug("post attrs")
 
-    # debug(e(socket.assigns, :showing_within, nil), "SHOWING")
+    # debug(e(assigns(socket), :showing_within, nil), "SHOWING")
     current_user = current_user_required!(socket)
 
     with %{} <- current_user || {:error, "You must be logged in"},
@@ -80,7 +80,7 @@ defmodule Bonfire.Pages.LiveHandler do
 
     # |> debug("post attrs")
 
-    # debug(e(socket.assigns, :showing_within, nil), "SHOWING")
+    # debug(e(assigns(socket), :showing_within, nil), "SHOWING")
     current_user = current_user_required!(socket)
 
     page_id = e(attrs, :reply_to, :thread_id, nil)
@@ -137,7 +137,7 @@ defmodule Bonfire.Pages.LiveHandler do
   end
 
   def handle_event("add_section", %{"section_id" => section_id} = params, socket) do
-    page = e(socket.assigns, :object, nil) || e(params, "page_id", nil)
+    page = e(assigns(socket), :object, nil) || e(params, "page_id", nil)
 
     Bonfire.Pages.Sections.put_in_page(uid!(section_id), uid!(page))
     |> debug("put_in_page")
@@ -155,7 +155,7 @@ defmodule Bonfire.Pages.LiveHandler do
   end
 
   def handle_event("remove_section", %{"section_id" => section_id} = params, socket) do
-    page = e(socket.assigns, :object, nil) || e(params, "page_id", nil)
+    page = e(assigns(socket), :object, nil) || e(params, "page_id", nil)
 
     Bonfire.Pages.Sections.remove_from_page(uid!(section_id), uid!(page))
     |> debug("remove_from_page")

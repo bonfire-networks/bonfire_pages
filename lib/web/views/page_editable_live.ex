@@ -48,7 +48,7 @@ defmodule Bonfire.Pages.Web.PageEditableLive do
     # implementation for bin ordering
     Bonfire.Pages.Sections.put_in_page(
       dragged_id,
-      e(socket.assigns, :object, :id, nil),
+      e(assigns(socket), :object, :id, nil),
       dropped_index
     )
 
@@ -75,7 +75,7 @@ defmodule Bonfire.Pages.Web.PageEditableLive do
   #   # save the order
   #   Bonfire.Pages.Sections.put_in_page(
   #     dragged_id,
-  #     e(socket.assigns, :object, :id, nil),
+  #     e(assigns(socket), :object, :id, nil),
   #     dropped_index
   #   )
 
