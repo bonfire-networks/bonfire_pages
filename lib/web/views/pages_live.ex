@@ -29,7 +29,7 @@ defmodule Bonfire.Pages.Web.PagesLive do
        selected_tab: :nav,
        pages:
          Bonfire.Social.Pins.list_instance_pins(
-           object_type: [Bonfire.Pages.Page],
+           object_types: [Bonfire.Pages.Page],
            current_user: current_user(assigns(socket))
          )
        #  |> debug("lnav")

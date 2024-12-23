@@ -33,7 +33,7 @@
             <ul class="flex-row hidden p-0 sm:flex menu menu-horizontal">
               <li :for={%{edge: %{object: %{post_content: %{name: _} = p}}} <-
                 Bonfire.Social.Pins.list_instance_pins(
-                  object_type: [Bonfire.Pages.Page],
+                  object_types: [Bonfire.Pages.Page],
                   current_user: current_user(@__context__)
                 )
                 |> e(:edges, [])
