@@ -9,7 +9,7 @@
 </div>
 <div class="flex items-center gap-2">
   <StatefulComponent
-    module={maybe_component(Bonfire.Boundaries.Web.BoundaryIconLive, @__context__)}
+    module={maybe_component(Bonfire.UI.Boundaries.BoundaryIconLive, @__context__)}
     with_label
     id={"boundary_#{id(@page)}"}
     object={@page}
