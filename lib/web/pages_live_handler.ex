@@ -118,9 +118,8 @@ defmodule Bonfire.Pages.LiveHandler do
           l("Section saved!")
         )
         |> Bonfire.UI.Common.SmartInput.LiveHandler.reset_input()
-        # |> assign(reload: random_dom_id())
         # current_url(socket), fallback: path(published))
-        |> patch_to("/pages/edit/#{page_id}?reload=#{random_dom_id()}")
+        |> patch_to("/pages/edit/#{page_id}?reload=#{Text.unique_integer()}")
       }
     else
       e ->
@@ -149,7 +148,7 @@ defmodule Bonfire.Pages.LiveHandler do
         :info,
         l("Added!")
       )
-      |> assign(reload: random_dom_id())
+      |> assign(reload: Text.unique_integer())
       # |> patch_to(current_url(socket), fallback: path(page))
     }
   end
@@ -167,7 +166,7 @@ defmodule Bonfire.Pages.LiveHandler do
         :info,
         l("Removed!")
       )
-      # |> assign(reload: random_dom_id())
+      # |> assign(reload: Text.unique_integer())
       |> patch_to(current_url(socket), fallback: path(page))
     }
   end
