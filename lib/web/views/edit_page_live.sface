@@ -86,7 +86,7 @@
         <form name="pin" phx-change="Bonfire.Social.Pins:pin">
           <label class="cursor-pointer label">
             <span class="label-text">{l("Pin (show in navigation)")}</span>
-            <input name="id" value={uid(@object)} type="hidden">
+            <input name="object_id" value={uid(@object)} type="hidden">
             <input name="scope" value="instance" type="hidden">
             <input name="direction" value="down" type="hidden">
             <input
