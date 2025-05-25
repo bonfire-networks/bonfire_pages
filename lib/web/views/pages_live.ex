@@ -30,7 +30,7 @@ defmodule Bonfire.Pages.Web.PagesLive do
        pages:
          Bonfire.Social.Pins.list_instance_pins(
            object_types: [Bonfire.Pages.Page],
-           current_user: current_user(assigns(socket))
+           current_user: current_user(socket)
          )
        #  |> debug("lnav")
      )}
