@@ -43,10 +43,10 @@
                 </LinkPatchLive>
               </li>
               <li>
-                <a target="_blank" href={Bonfire.Application.repository()}>
+                <LinkLive target="_blank" to={Bonfire.Application.repository()}>
                   <#Icon iconify="bi:git" class="w-6 h-6" />
                   <span class="hidden lg:block">Get the code</span>
-                </a>
+                </LinkLive>
               </li>
             </ul>
           </div>
@@ -107,30 +107,30 @@
     >
       <ul class="p-0 menu">
         <li>
-          <a href="/docs" class="">
+          <LinkLive to="/docs" class="">
             <span class="text-base font-regular">Documentation</span>
-          </a>
+          </LinkLive>
         </li>
         <li>
-          <a href="/faq" class="">
+          <LinkLive to="/faq" class="">
             <span class="text-base font-regular">FAQs</span>
-          </a>
+          </LinkLive>
         </li>
         <li>
-          <a href="/blog" class="">
+          <LinkLive to="/blog" class="">
             <span class="text-base font-regular">Blog</span>
-          </a>
+          </LinkLive>
         </li>
         <li>
-          <a href="/contribute" class="">
+          <LinkLive to="/contribute" class="">
             <span class="text-base font-regular">Contribute</span>
-          </a>
+          </LinkLive>
         </li>
 
         <li>
-          <a href="https://github.com/bonfire-networks/bonfire-app">
+          <LinkLive to="https://github.com/bonfire-networks/bonfire-app">
             <span class="text-base font-regular">Get the code</span>
-          </a>
+          </LinkLive>
         </li>
       </ul>
     </div>

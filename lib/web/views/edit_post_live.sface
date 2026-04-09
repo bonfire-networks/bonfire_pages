@@ -6,10 +6,10 @@
   <div>
     <header class="flex items-center justify-between">
       <div class="flex items-center gap-3 px-2">
-        <a href="#" class="items-center normal-case btn btn-sm btn-ghost">
+        <LinkLive to="/posts" class="items-center normal-case btn btn-sm btn-ghost">
           <#Icon solid="ChevronLeft" class="w-5 h-5" />
           <div class="ml-1 text-sm">{l("Posts")}</div>
-        </a>
+        </LinkLive>
         <div class="text-sm text-base-content/70">{l("New post")}</div>
       </div>
       <div class="flex items-center gap-3">
@@ -70,7 +70,7 @@
       <div class="w-full max-w-xs p-3 form-control">
         <label class="flex-1 w-full label">
           <span class="!text-sm w-full flex items-center justify-between flex-1 font-medium label-text">
-            <span>{l("Post URL")}</span><a href="" class="btn btn-xs btn-primary">{l("View")}</a></span>
+            <span>{l("Post URL")}</span><LinkLive to="" class="btn btn-xs btn-primary">{l("View")}</LinkLive></span>
         </label>
         {!-- <span class="label-text-alt text-base-content/70">{base_url()}/</span> --}
         {!-- TODO: editable --}
