@@ -21,7 +21,7 @@ defmodule Bonfire.Pages.Web.PageLive do
          smart_input_opts: %{inline_only: true},
          nav_header: Bonfire.Pages.Web.PagesHeaderLive
        )
-       |> SEO.assign(object)}
+       |> Bonfire.UI.Common.SEO.maybe_assign_seo(object)}
     end
   end
 end
