@@ -33,6 +33,9 @@ defmodule Bonfire.Pages.Web.EditSectionLive do
   @behaviour Bonfire.UI.Common.SmartInputModule
   def smart_input_module, do: [:section, Bonfire.Pages.Section]
 
+  def smart_input_icon(_), do: "ph:note-duotone"
+  def smart_input_label(_), do: l("Section")
+
   def available_sections() do
     Bonfire.Pages.Sections.list_paginated([], paginate: [limit: 100])
     # |> debug("lsections")
