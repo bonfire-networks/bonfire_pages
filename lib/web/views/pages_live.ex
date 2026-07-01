@@ -1,7 +1,7 @@
 defmodule Bonfire.Pages.Web.PagesLive do
   use Bonfire.UI.Common.Web, :surface_live_view
 
-  declare_extension("Pages",
+  declare_extension(l("Pages"),
     icon: "dashicons:text-page",
     emoji: "📄",
     description: l("Create and edit simple webpages.")
