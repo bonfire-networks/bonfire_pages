@@ -27,7 +27,7 @@
 
     <article class="max-w-screen-md mx-auto mt-16">
       {!-- HERE WE SHOULD USE OUR UPLOAD_BUTTON COMP --}
-      <label class="inline-flex items-center gap-2 mb-2 ml-2 font-light normal-case btn btn-ghost text-base-content/70 btn-sm">
+      <label class="inline-flex items-center gap-2 mb-2 ml-2 font-normal normal-case btn btn-ghost text-base-content/70 btn-sm">
         <#Icon solid="PaperClip" class="w-4 h-4 mx-auto" />
         <span>{l("Add a feature image")}</span>
       </label>
@@ -61,7 +61,7 @@
   >
     <nav class="" role="navigation" aria-label={l("Post settings")}>
       <div class="flex items-center justify-between p-4 pt-6">
-        <div class="font-semibold">{l("Post settings")}</div>
+        <div class="font-bold">{l("Post settings")}</div>
         <div class="btn btn-sm btn-circle btn-ghost" x-on:click="full_page = true">
           <#Icon iconify="akar-icons:sidebar-right" class="w-4 h-4 text-base-content/70" />
         </div>

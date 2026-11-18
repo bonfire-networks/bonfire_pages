@@ -47,17 +47,18 @@ defimpl SEO.OpenGraph.Build, for: Bonfire.Pages.Page do
   end
 end
 
-defimpl SEO.Breadcrumb.Build, for: Bonfire.Pages.Page do
-  use Bonfire.UI.Common
-  alias Bonfire.Pages
+# SEO.Breadcrumb no longer exists in phoenix_seo 0.3.x (breadcrumbs moved to JSON-LD)
+# defimpl SEO.Breadcrumb.Build, for: Bonfire.Pages.Page do
+#   use Bonfire.UI.Common
+#   alias Bonfire.Pages
 
-  def build(page, _) do
-    SEO.Breadcrumb.List.build([
-      [name: "Pages", item: "/pages"],
-      [name: e(page, :post_content, :title, nil), item: Pages.page_path(page)]
-    ])
-  end
-end
+#   def build(page, _) do
+#     SEO.Breadcrumb.List.build([
+#       [name: "Pages", item: "/pages"],
+#       [name: e(page, :post_content, :title, nil), item: Pages.page_path(page)]
+#     ])
+#   end
+# end
 
 # defp put_image(page) do
 #   file = "/images/blog/#{page.id}.png"

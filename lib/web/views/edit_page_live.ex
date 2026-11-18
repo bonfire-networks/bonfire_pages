@@ -13,20 +13,22 @@ defmodule Bonfire.Pages.Web.EditPageLive do
      )}
   end
 
-  defp handle_params(%{"edit_section" => section_id} = params, _url, socket) do
+  def handle_params(%{"edit_section" => section_id} = params, url, socket) do
     # debug(section_id)
-
-    with {:ok, section} <- Bonfire.Pages.Sections.get(section_id, socket) do
-      socket
-    else
-      _ ->
+    # TODO: actually use the section being edited (flow is unfinished)
+    socket =
+      with {:ok, _section} <- Bonfire.Pages.Sections.get(section_id, socket) do
         socket
-        |> assign_error(l("Could not find the section to edit"))
-    end
-    |> handle_params(Map.drop(params, ["edit_section"]), nil, ...)
+      else
+        _ ->
+          socket
+          |> assign_error(l("Could not find the section to edit"))
+      end
+
+    handle_params(Map.drop(params, ["edit_section"]), url, socket)
   end
 
-  defp handle_params(params, _url, socket) do
+  def handle_params(params, _url, socket) do
     id = e(params, "id", nil)
     # TODO: avoid querying twice? in EditPage and PageEditable
     object =

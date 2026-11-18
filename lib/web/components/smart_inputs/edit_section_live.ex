@@ -21,6 +21,7 @@ defmodule Bonfire.Pages.Web.EditSectionLive do
   prop uploads, :any, default: nil
   prop uploaded_files, :list, default: nil
   prop title_prompt, :string, default: nil
+  prop thread_mode, :any, default: nil
 
   prop open_boundaries, :boolean, default: false
   prop boundaries_modal_id, :string, default: :sidebar_composer
@@ -29,12 +30,13 @@ defmodule Bonfire.Pages.Web.EditSectionLive do
   prop textarea_container_class, :css_class
   prop textarea_container_class_alpine, :string
   prop textarea_class, :css_class
+  prop composer_policy, :map, default: nil
 
   @behaviour Bonfire.UI.Common.SmartInputModule
   def smart_input_module, do: [:section, Bonfire.Pages.Section]
 
   def smart_input_icon(_), do: "ph:note-duotone"
-  def smart_input_label(_), do: l("Section")
+  def smart_input_label(_), do: l("Create section")
 
   def available_sections() do
     Bonfire.Pages.Sections.list_paginated([], paginate: [limit: 100])

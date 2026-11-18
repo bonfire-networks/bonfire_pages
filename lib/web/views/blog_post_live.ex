@@ -31,7 +31,9 @@ defmodule Bonfire.Pages.Web.BlogPostLive do
      |> Bonfire.Social.Objects.LiveHandler.load_object_assigns()
      |> assign_new(
        :activity_component_id,
-       "blog-" <> (Enums.id(@activity) || Enums.id(@object) || "no-id")
+       fn assigns ->
+         "blog-" <> (Enums.id(assigns[:activity]) || Enums.id(assigns[:object]) || "no-id")
+       end
      )
      |> prepare_media()}
   end

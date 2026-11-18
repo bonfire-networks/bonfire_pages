@@ -30,10 +30,11 @@ defmodule Bonfire.Pages.Web.CreatePageLive do
   prop textarea_container_class, :css_class
   prop textarea_container_class_alpine, :string
   prop textarea_class, :css_class
+  prop composer_policy, :map, default: nil
 
   @behaviour Bonfire.UI.Common.SmartInputModule
   def smart_input_module, do: [:page, Bonfire.Pages.Page]
 
   def smart_input_icon(_), do: "ph:note-duotone"
-  def smart_input_label(_), do: l("Page")
+  def smart_input_label(_), do: l("Create page")
 end

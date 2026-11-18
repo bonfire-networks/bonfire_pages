@@ -39,7 +39,7 @@
   >
     <nav class="" role="navigation" aria-label={l("Page settings")}>
       <div class="flex items-center justify-between p-4 pt-6">
-        <div class="font-semibold">{l("Page settings")}</div>
+        <div class="font-bold">{l("Page settings")}</div>
         <div class="btn btn-sm btn-circle btn-ghost" x-on:click="full_page = true">
           <#Icon iconify="akar-icons:sidebar-right" class="w-4 h-4 text-base-content/70" />
         </div>
